@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, ::before, ::after {
+    @apply m-0 p-0;
+  }
+  html {
+    @apply scroll-smooth;
+    font-size: calc(0.74rem + 0.74vw);
+  }
+  body {
+    @apply min-h-screen flex flex-col justify-between font-['Galeana'];
+    background-color: white;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-['Canela']
+  }
+  h1 {
+    @apply text-4xl;
+  }
+  h2 {
+    @apply text-2xl;
+  }
+  h3 {
+    @apply text-xl;
+  }
+  h4 {
+    @apply text-lg;
+  }
+  h5, p {
+    @apply text-base;
+  }
+  h6 {
+    @apply text-sm;
+  }
+}
+
+@layer components {
+  #nav.open {
+    max-height: 80vh !important;
+  }
+  #testimonials {
+    @apply overflow-x-scroll snap-mandatory snap-x;
+    scroll-snap-padding: 60%;
+  }
+  #testimonials * {
+    @apply snap-always snap-start;
+  }
+  .carouselx::-webkit-scrollbar {
+    @apply hidden;
+  }
+  .cardBox {
+    @apply w-fit mx-auto;
+  }
+  .card {
+    @apply mt-4 mx-auto flex flex-col sm:flex-row items-center gap-4;
+  }
+  .card imgBox {
+    @apply relative w-fit shrink-0 sm:self-end;
+  }
+  .card content {
+    @apply content-start;
+  }
+}
+
+@layer utilities {
+  .path-arrow-down {
+    clip-path: polygon(0 0, 0 60% , 100% 100%, 100% 0);
+  }
+}
+
+@keyframes nav-spn {
+  30% {
+    transform: rotate(-60deg)
+  },
+  70% {
+    transform: rotate(180deg)
+  },
+  100% {
+    transform: rotate(135deg)
+  }
+}
+
+@font-face {
+  font-family: "Canela";
+  src: url("canela.otf")
+}
+
+@font-face {
+  font-family: "Courier";
+  src: url("Courier Prime.ttf")
+}
+
+@font-face {
+  font-family: "Galeana";
+  src: url("galeana.otf");
+  unicode-range: U+0041-005A, U+0061-007A;
+}

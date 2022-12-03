@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="out.css">
+  <title>Notre Dame Salem</title>
+
+  <script src="https://kit.fontawesome.com/f3339b4404.js" crossorigin="anonymous"></script>
+  <script src="scripts/nav.js"></script>
+</head>
+<body>
+  <%- include("partials/header"); %>
+
+  <section class="px-4 py-8 bg-slate-400 bg-[url('view.jpeg')] bg-cover bg-center flex flex-col justify-center items-center min-h-screen">
+    <h1 class="text-gray-50 drop-shadow-xl text-[calc(2rem+2vmax)] text-center">
+      Educating Heart And Mind
+    </h1>
+    <div class="">
+      <span class="inline-block text-amber-600 text-[10rem] translate-x-8 -translate-y-5 font-['Canela']">N</span>
+      <span class="inline-block text-amber-300 text-[10rem] -translate-x-8 translate-y-5 font-['Canela']">D</span>
+    </div>
+  </section>
+
+  <section class="px-4 py-8 bg-amber-100">
+    <h2 class="text-center font-extrabold">
+      News & Events
+    </h2>
+    
+    <div class="mt-4 w-fit mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <% ([
+        { time: new Date(), name: "Annual Day Circular", link: "" },
+        { time: new Date(2022, 10, 2), name: "Math Bee Winners", link: "" },
+        { time: new Date(2022, 9, 27), name: "PTA Meeting 4 2022", link: "" },
+        { time: new Date(2022, 9, 19), name: "Essay Writing Competition Topics", link: "" },
+        { time: new Date(2022, 9, 1), name: "Fancy Dress Circular", link: "" },
+        { time: new Date(2022, 8, 22), name: "Kalothsav Information", link: "" },
+        { time: new Date(2022, 8, 21), name: "Diwali Celeberation", link: "" },
+        { time: new Date(2022, 9, 19), name: "Sahodaya Football", link: "" }
+      ]).slice(0, 8).forEach((v, i) => { %>
+        <div class="
+          <% if (i>3) { %> max-md:hidden <% } %> 
+          relative flex gap-4 items-center bg-gray-50">
+          <div class="inline-block p-2 text-center bg-blue-400 text-gray-50">
+            <h2 class="font-['Courier'] font-black">
+              <%= ("0"+v.time.getDate().toString()).slice(-2) %>
+            </h2>
+            <h4 class="font-black">
+              <%= v.time.toLocaleString("default", { month: "short"}) %>
+            </h4>
+          </div>
+          <h4 class="px-1">
+            <%= v.name %>
+          </h4>
+        </div>
+      <% }) %>
+      </div>
+
+      <a class="mt-8 inline-block shadow-md px-2 py-1 bg-sky-600 font-bold text-lg text-neutral-100">
+        <i class="fa-solid fa-angle-right mr-2"></i> More
+      </a>
+    </div>
+  </section>
+
+  <section class="px-4 pt-8 pb-16">
+    <h1 class="text-blue-900 font-extrabold text-center"> Who We Are </h1>
+    
+    <div class="relative p-2 w-fit mx-auto">
+      <div class="relative overflow-hidden w-full h-32">
+        <!--<a href="https://www.freepik.com/free-vector/illustration-business-people-meeting_3236148.htm#query=team&position=8&from_view=search&track=sph">Image by rawpixel.com</a> on Freepik-->
+        <img class="w-full h-full" src="team.svg" alt="Team">
+      </div>
+
+      <p class="mt-4 max-w-xl text-left">
+        A <span class="font-semibold">prestigous institution</span> honing the skills and ability of our future citizens by fulfilling needs with good deeds. We aim at serving the mind and the heart to their fullest and thus <span class="font-semibold">satisfy those who seek us</span>. We are an organization with our destiny dertermined that is to carve our name at places via our students.
+      </p>
+
+      <h3 class="mt-4 font-bold">
+        We Contribute to the Greater Society.
+      </h3>
+
+      <a class="mt-4 inline-block shadow-md px-2 py-1 bg-sky-600 font-bold text-neutral-100">
+        <i class="fa-solid fa-angle-right mr-2"></i>Learn More
+      </a>
+    </div>
+  </section>
+
+  <section class="">
+    <div class="bg-[url('tree.jpeg')] bg-cover bg-center py-12 text-center">
+      <h1 class="text-gray-50 font-black font-extrabold">
+        What it's like to be a Notre Damian.
+      </h1>
+    </div>
+    
+    <div class="px-16 py-8 cardBox bg-slate-100">
+      <div class="card">
+        <div class="h-32 imgBox bg-gray-50">
+          <img class="w-full h-full" src="academics.svg">
+        </div>
+        <div class="content">
+          <h4 class="font-bold">
+            Emphasis on Academics
+          </h4>
+          <p class="max-w-xl"> We concentrate on Academics than any other extra-curricular activities. The teachers tend to make each child in the room understand, like really understand the content. </p>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="h-32 imgBox bg-gray-50">
+          <img class="w-full h-full" src="security.svg">
+        </div>
+        <div class="content">
+          <h4 class="font-bold">
+            Secure Ambiance
+          </h4>
+          <p class="max-w-xl"> Classrooms and vicinity are well-sheltered and secured with CCTV-cameras. Surrounding the school are agricultural fields in north and east. Transport facilities by bus are provided. </p>
+        </div>
+      </div>
+       
+      <div class="card">
+        <div class="h-32 imgBox bg-gray-50">
+          <img class="w-full h-full" src="laboratory.svg">
+        </div>
+        <div class="content">
+          <h4 class="font-bold">
+            Labs | Smart Classrooms
+          </h4>
+          <p class="max-w-xl"> We are well-equipped for practical teaching with Laboratories for different subjects to let students know how things are done. Smartclassrooms provide visual knowledge to the students.</p>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="h-32 imgBox bg-gray-50">
+          <img class="w-full h-full" src="socialize.svg">
+        </div>
+        <div class="content">
+          <h4 class="font-bold">
+            Sense of Integration
+          </h4>
+          <p class="max-w-xl"> We try to invoke a sense of integration among the teachers, students as well as the parents/guardians. This consequently enhances communication and social skills in children. </p>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+
+  <section class="bg-amber-100/50">
+    <div class="gap-4 px-4 py-8">
+    <h2 class="font-extrabold text-center"> Testimonials </h2>
+    
+    <h6 class="block font-thin w-fit ml-auto">
+      << swipe >>
+    </h6>
+    
+    <div id="testimonials" class="relative scroll-pl-4 px-28 flex flex-row gap-4">
+      <div class="min-w-[16rem] h-fit scroll-start scroll-always p-3 bg-amber-200">
+        <p>Notre Dame is an excellent place for learning and development of students. They serve a creative, supportive and productive environment. Education is treated as worship here. All the faculties are extremely supportive and knowledgeable. All the subjects as well as concepts are taught thoroughly using simple and easy methods.</p>
+        <span class="pt-2 block ml-auto font-amber-800 font-semibold text-right"> Primary Student </span>
+      </div>
+      <div class="min-w-[16rem] h-fit scroll-start scroll-always p-3 bg-amber-200">
+        <p>During these tough times when lives are seeing complete paradigm shift, children are going through a major transition and who else to comfort them apart from the parents but their teachers. We sincerely thank the efforts by the teachers to make this unknown difficult journey easier for our kids. We are very happy to have chosen the right institution.</p>
+        <span class="pt-2 block ml-auto font-amber-800 font-semibold text-right"> Father of High Schooler </span>
+      </div>
+      <div class="min-w-[16rem] h-fit scroll-start scroll-always p-3 bg-amber-200">
+        <p>There's real alchemy, the ingredients being the perpetual kindness, the thoughtfulness, the imagination, the fun, the skill and technique, the reassuring blend of modernity and glorious timelessness. The school serves goodwill, simple and traditional values, and joy. I know I am satisfied, but this is nothing but fantastic.</p>
+        <span class="pt-2 block ml-auto font-amber-800 font-semibold text-right"> Parent of Primary Schooler </span>
+      </div>
+      <div class="min-w-[16rem] h-fit scroll-start scroll-always p-3 bg-amber-200">
+        <p>Notre Dame focuses on improving my son’s areas of need and really puts a huge emphasis on bolstering his individual strengths. The teachers are highly educated, thoughtful, and nurturing. They provide rigorous academic challenges, as well as the tools and strategies needed to face those challenges. I am so pleased and full to be a part of the fam.</p>
+        <span class="pt-2 block ml-auto font-amber-800 font-semibold text-right"> Parent of High Schooler </span>
+      </div>
+      <div class="min-w-[16rem] h-fit scroll-start scroll-always p-3 bg-amber-200">
+        <p>It is a little jewel box of a school that is overflowing with love, kindness and a sense of service. My child has improved in a way that he never would have at any other school due to this excellent individualized and warm environment. Thanks for such an environment.</p>
+        <span class="pt-2 block ml-auto font-amber-800 font-semibold text-right"> Parent of Middle Schooler </span>
+      </div>
+      <div class="min-w-[16rem] h-fit scroll-end scroll-always p-3 bg-amber-200">
+        <p>Never thought schools can be so amazing! Studying at Notre Dame has always been fun even in pandemics. We missed school days instead of holidays because teachers are so co-operative and engaging that two years are not enough to assimilate their knowledge.</p>
+        <span class="pt-2 block ml-auto font-amber-800 font-semibold text-right"> High School Student </span>
+      </div>
+    </div>
+    </div>
+
+    <div class="p-4 mb-4 gap-2 flex justify-center bg-amber-100">
+      <div class="relative p-2 text-center">
+        <h1 class="font-black"> 2417 </h1> <br>
+        <span class="font-['Canela']"> Satisfied Students </span>
+      </div>
+      <div class="relative p-2 text-center">
+        <h1 class="font-black"> 147 </h1> <br>
+        <span class="font-['Canela']"> Teaching Staffs </span>
+      </div>
+      <div class="relative p-2 text-center">
+        <h1 class="font-black"> 117 </h1> <br>
+        <span class="font-['Canela']"> Non-Teaching Staffs </span>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-4 py-8">
+    <h2 class="font-extrabold text-center">
+      Management
+    </h2>
+    
+    <p class="max-w-xl mx-auto mt-4 text-left">
+      In 1837 <span class="font-bold text-blue-900">Fr.Basil Moreau</span>, the Founder of the Congregation of Holy Cross envisioned <span class="font-semibold">education as a weapon</span> of significance for empowering the young for a better and brighter world and to uplift the falling society of France.
+    </p>
+
+    <div class="mt-4 mx-auto w-fit flex flex-col gap-4 sm:flex-row">
+      <div class="gap-4">
+        <div class="relative w-full h-56">
+          <img src="mariasuresh.jpg" class="w-full h-full">
+        </div>
+
+        <div class="text-center">
+          <h4 class="font-bold"> Bro. Maria Suresh CSC. </h2>
+          <h5 class="font-md text-slate-800"> Principal </h3>
+        </div>
+      </div>
+      <div class="gap-4">
+        <div class="relative w-full h-56">
+          <img src="nelson.jpg" class="w-full h-full">
+        </div>
+
+        <div class="text-center">
+          <h4 class="font-bold"> Bro. Nelson D'Souza  CSC. </h2>
+          <h5 class="font-md text-slate-800"> Administrator </h3>
+        </div>
+      </div>
+      <div class="gap-4">
+        <div class="relative w-full h-56">
+          <img src="simeos.jpg" class="w-full h-full">
+        </div>
+
+        <div class="text-center">
+          <h4 class="font-bold"> Bro. Assis Simeos CSC. </h2>
+          <h5 class="font-md text-slate-800"> Vice Principal </h3>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <%- include("partials/footer"); %>
+
+</body>
+</html>
