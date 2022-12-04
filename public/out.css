@@ -666,6 +666,10 @@ h6 {
   position: static;
 }
 
+.fixed {
+  position: fixed;
+}
+
 .relative {
   position: relative;
 }
@@ -696,6 +700,11 @@ h6 {
 .my-6 {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+}
+
+.my-1 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
 }
 
 .mt-4 {
@@ -770,10 +779,6 @@ h6 {
   display: none;
 }
 
-.h-56 {
-  height: 14rem;
-}
-
 .h-full {
   height: 100%;
 }
@@ -800,6 +805,10 @@ h6 {
   height: fit-content;
 }
 
+.h-56 {
+  height: 14rem;
+}
+
 .h-6 {
   height: 1.5rem;
 }
@@ -814,20 +823,16 @@ h6 {
   width: fit-content;
 }
 
-.w-56 {
-  width: 14rem;
-}
-
-.w-full {
-  width: 100%;
-}
-
 .w-1 {
   width: 0.25rem;
 }
 
 .w-4 {
   width: 1rem;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .w-\[75\%\] {
@@ -906,12 +911,6 @@ h6 {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.scale-\[7\] {
-  --tw-scale-x: 7;
-  --tw-scale-y: 7;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
 .scroll-pl-4 {
   scroll-padding-left: 1rem;
 }
@@ -964,10 +963,6 @@ h6 {
   overflow: hidden;
 }
 
-.overflow-clip {
-  overflow: clip;
-}
-
 .rounded-full {
   border-radius: 9999px;
 }
@@ -987,6 +982,11 @@ h6 {
 .border-neutral-900 {
   --tw-border-opacity: 1;
   border-color: rgb(23 23 23 / var(--tw-border-opacity));
+}
+
+.border-rose-600 {
+  --tw-border-opacity: 1;
+  border-color: rgb(225 29 72 / var(--tw-border-opacity));
 }
 
 .border-b-sky-800 {
@@ -1071,12 +1071,12 @@ h6 {
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
 }
 
-.bg-\[url\(\'view\.jpeg\'\)\] {
-  background-image: url('view.jpeg');
+.bg-\[url\(\'view\.webp\'\)\] {
+  background-image: url('view.webp');
 }
 
-.bg-\[url\(\'tree\.jpeg\'\)\] {
-  background-image: url('tree.jpeg');
+.bg-\[url\(\'tree\.webp\'\)\] {
+  background-image: url('tree.webp');
 }
 
 .from-sky-200 {
@@ -1217,6 +1217,11 @@ h6 {
   font-family: 'Courier';
 }
 
+.text-7xl {
+  font-size: 4.5rem;
+  line-height: 1;
+}
+
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
@@ -1263,6 +1268,11 @@ h6 {
 
 .font-thin {
   font-weight: 100;
+}
+
+.text-amber-500 {
+  --tw-text-opacity: 1;
+  color: rgb(245 158 11 / var(--tw-text-opacity));
 }
 
 .text-gray-50 {
@@ -1351,6 +1361,12 @@ h6 {
   transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.transition-all {
+  transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -1484,6 +1500,10 @@ h6 {
   background-color: rgb(252 211 77 / 0.5);
 }
 
+.hover\:border-b-2:hover {
+  border-bottom-width: 2px;
+}
+
 .peer:hover ~ .peer-hover\:inline {
   display: inline;
 }
@@ -1525,6 +1545,16 @@ h6 {
 
   .md\:flex-row {
     flex-direction: row;
+  }
+
+  .md\:hover\:bg-sky-300:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(125 211 252 / var(--tw-bg-opacity));
+  }
+
+  .md\:hover\:text-blue-900:hover {
+    --tw-text-opacity: 1;
+    color: rgb(30 58 138 / var(--tw-text-opacity));
   }
 }
 

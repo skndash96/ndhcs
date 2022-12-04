@@ -1,35 +1,39 @@
-<header id="header" class="sticky top-0 px-2 py-1 z-20 flex justify-between bg-blue-900 text-gray-50">
-  <div class="flex items-center gap-2">
-    <div class="relative w-6 h-6">
-      <img src="logo.svg" class="w-full h-full">
-    </div>
+<header id="header" class="sticky top-0 z-20 flex justify-between bg-blue-900 text-gray-50">
+  <a href="/home" class="ml-2 my-1 block flex gap-2">
+    <img src="logo.png" class="w-6 h-6">
     <h4 class="font-black font-['Canela']">
       Notre Dame
     </h4>
-  </div>
-
+  </a>
+  
   <button id="navToggle" class="md:hidden p-1">
     MENU
   </button>
 
   <nav id="nav" class="max-md:absolute max-md:backdrop-blur-sm max-md:transition-all max-md:max-h-0 md:open max-md:overflow-hidden max-md:left-0 max-md:right-0 max-md:bottom-0 max-md:translate-y-full max-md:bg-sky-500/75 text-gray-50">
-    <ul class="ml-auto max-md:mt-4 px-4 w-fit flex flex-col md:flex-row items-end gap-4 font-['Canela'] max-md:text-xl">
-      <li class="max-md:font-bold">
+    <ul class="ml-auto max-md:mt-4 px-4 w-fit flex flex-col md:flex-row items-end font-['Canela'] max-md:text-xl">
+      <li class="px-2 py-1 max-md:font-bold hover:border-b-2 border-rose-600 transition-all md:hover:bg-sky-300 md:hover:text-blue-900">
+        <a href="/home"> Home </a>
+      </li>
+      <li class="px-2 py-1 max-md:font-bold hover:border-b-2 border-rose-600 transition-all md:hover:bg-sky-300 md:hover:text-blue-900">
         <a href="/about"> About </a>
       </li>
-      <li class="max-md:font-bold">
+      <li class="px-2 py-1 max-md:font-bold hover:border-b-2 border-rose-600 transition-all md:hover:bg-sky-300 md:hover:text-blue-900">
+        <a href="/events"> Events </a>
+      </li>
+      <li class="px-2 py-1 max-md:font-bold hover:border-b-2 border-rose-600 transition-all md:hover:bg-sky-300 md:hover:text-blue-900">
         <a href="/gallery"> Gallery </a>
       </li>
-      <li class="max-md:font-bold">
+      <li class="px-2 py-1 max-md:font-bold hover:border-b-2 border-rose-600 transition-all md:hover:bg-sky-300 md:hover:text-blue-900">
         <a href="/decorum"> Decorum </a>
       </li>
-      <li class="max-md:font-bold">
+      <li class="px-2 py-1 max-md:font-bold hover:border-b-2 border-rose-600 transition-all md:hover:bg-sky-300 md:hover:text-blue-900">
         <a href="/facility"> Facility </a>
       </li>
-      <li class="max-md:font-bold">
+      <li class="px-2 py-1 max-md:font-bold hover:border-b-2 border-rose-600 transition-all md:hover:bg-sky-300 md:hover:text-blue-900">
         <a href="/details"> Details </a>
       </li>
-      <li class="max-md:font-bold">
+      <li class="px-2 py-1 max-md:font-bold hover:border-b-2 border-rose-600 transition-all md:hover:bg-sky-300 md:hover:text-blue-900">
         <a href="#footer"> Contact </a>
       </li>
     </ul>
