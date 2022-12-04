@@ -10,5 +10,5 @@ app.use(express.static(path.join(__dirname, "public/")))
 app.use("/", Router)
 
 app.listen(PORT, () => {
-  console.log("🚀 Shipping on port 3000", proces.env.NODE_ENV)
+  console.log("🚀 Shipping on port 3000", process.env.NODE_ENV)
 })
