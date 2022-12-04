@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       screens: {
         'sm': '576px',
-        'max-md': {'raw': '(max-width: 769px)'}
+        'max-md': {'raw': '(max-width: 767px)'}
       }
     },
   },

@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "dev": "npx tailwindcss -i ./tailwind.css -o ./public/out.css --minify && node index.js",
+    "run": "node index.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

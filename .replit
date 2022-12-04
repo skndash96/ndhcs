@@ -1,5 +1,5 @@
 entrypoint = "index.js"
-run = "npx tailwindcss -i ./tailwind.css -o ./public/out.css && node index.js"
+run = "npm run dev"
 
 hidden = [".config"]
 
