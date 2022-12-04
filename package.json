@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx tailwindcss -i ./tailwind.css -o ./public/out.css --minify && node index.js",
-    "production": "set NODE_ENV=production && npx tailwindcss -i ./tailwind.css -o ./public/out.css --minify && node index.js"
+    "start": "set NODE_ENV=production && npx tailwindcss -i ./tailwind.css -o ./public/out.css --minify && node index.js",
+    "dev": "npx tailwindcss -i ./tailwind.css -o ./public/out.css --minify && node index.js"
   },
   "keywords": [],
   "author": "",
