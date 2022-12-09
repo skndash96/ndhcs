@@ -18,7 +18,7 @@ for (let file of files) {
 }
 
 Router.get("/", (req, res) => {
-  res.redirect("/events")
+  res.redirect("/home")
 })
 
 Router.get("/*", (req, res) => {
