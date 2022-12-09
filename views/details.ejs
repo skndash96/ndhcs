@@ -6,82 +6,102 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="out.css">
-  <title>About - Notre Dame Salem</title>
+  <title>Details - Notre Dame Salem</title>
 
   <script src="https://kit.fontawesome.com/f3339b4404.js" crossorigin="anonymous"></script>
   <script src="scripts/nav.js"></script>
 </head>
 <body>
+  <%- include("partials/loader"); %>
   <%- include("partials/header"); %>
   
-  <main class="p-8 mx-auto max-w-4xl">
+  <main class="p-8">
     <div class="mt-4 mx-auto w-fit max-w-xl">
         <h2 class="-ml-2 font-semibold">
           Details
         </h2>
 
         <div class="mt-2">
-          <h4 class="mr-8">Name (as per Affiliation)</h4>
-          <span>Notre Dame of Holy Cross School (CBSE) <br> Gundukalloor, Udayapatti Post, Salem - 636 140, TAMIL NADU.</span>
+          <span class="mr-8 text-stone-600">Name (as per Affiliation)</span><br>
+          <span class="font-semibold">Notre Dame of Holy Cross School (CBSE) <br> Gundukalloor, Udayapatti Post, Salem - 636 140, TAMIL NADU.</span>
         </div>
-        <div class="mt-4">
-          <h4 class="mr-8 md:inline">Year of Establishment</h4>
-          <span>2008</span>
+      
+        <div class="mt-4 grid grid-cols-2">
+          <span class="mr-8 text-stone-600">Year of Establishment</span>
+          <span class="font-semibold">2008</span>
         </div>
         
-        <hr class="mx-auto h-0.5 w-[75%] max-w-xl bg-sky-500 shadow-md my-4">
-      
+        <div class="mt-4 grid grid-cols-2">
+          <span class="mr-8 text-stone-600">Gender</span>
+          <span class="font-semibold">Co-Education</span>
+        </div>
+        
+        <div class="mt-4 grid grid-cols-2">
+          <span class="mr-8 text-stone-600">Classes</span>
+          <span class="font-semibold">LKG to XII</span>
+        </div>
+        
+        <div class="mt-4 grid grid-cols-2">
+          <span class="mr-8 text-stone-600">Streams</span>
+          <span class="font-semibold">PCMB, PCM, PCB, Commerce and Social Science.</span>
+        </div>
+        
         <div class="mt-4">
           NOC from State or recommendation of Embassy of India obtained.
         </div>
-        <div class="mt-4">
-          <h4 class="mr-8 md:inline">NOC Number</h4>
-          <span>K. Dis.No.27106/S4/2009</span>
+      
+        <div class="mt-4 grid grid-cols-2">
+          <span class="mr-8 text-stone-600">NOC Number</span>
+          <span class="font-semibold">K. Dis.No.27106/S4/2009</span>
         </div>
-        <div class="mt-4">
-          <h4 class="mr-8 md:inline">NOC Issue Date</h4>
-          <span>24-09-2009</span>
+      
+        <div class="mt-4 grid grid-cols-2">
+          <span class="mr-8 text-stone-600">NOC Issue Date</span>
+          <span class="font-semibold">24-09-2009</span>
         </div>
-        
-        <hr class="mx-auto h-0.5 w-[75%] max-w-xl bg-sky-500 shadow-md my-4">
         
         <div class="mt-4">
           School is recongnised by authority of <a href="https://cbse.gov.in" target="_blank" referrer-policy="no-referrer">CBSE</a>.
         </div>
-        <div class="mt-4">
-          <h4 class="mr-8 md:inline">Affiliation Number</h4>
-          <span>1930314</span>
+      
+        <div class="mt-4 grid grid-cols-2">
+          <span class="mr-8 text-stone-600">Affiliation Number</span>
+          <span class="font-semibold">1930314</span>
         </div>
-        <div class="mt-4">
-          <h4 class="mr-8 md:inline">Affiliation Status</h4>
-          <span>Provisional</span>
+      
+        <div class="mt-4 grid grid-cols-2">
+          <span class="mr-8 text-stone-600">Affiliation Status</span>
+          <span class="font-semibold">Provisional</span>
         </div>
-        <div class="mt-4">
-          <h4 class="mr-8 md:inline">Affiliation Since</h4>
-          <span>2012</span>
+      
+        <div class="mt-4 grid grid-cols-2">
+          <span class="mr-8 text-stone-600">Affiliation Since</span>
+          <span class="font-semibold">2012</span>
         </div>
+      
         <div class="mt-4 relative">
-          <h4 class="mr-8">
+          <span class="mr-8 block text-stone-600">
             Name of Trust/Company and Validity.
             <i class="peer fa-solid fa-circle-info"></i>
             <span class="hidden peer-hover:inline -translate-y-full -translate-x-full px-1 py-0.5 w-20 text-xs text-gray-50 bg-slate-700 font-['Galeana']"> Registered Under Section 25 of the Company Act, 1956</span>
-          </h4>
-          <span>Brothers Of Holy Cross, Lifetime</span>
+          </span><br>
+          <span class="font-semibold">Brothers Of Holy Cross, Lifetime</span>
         </div>
-        <div class="mt-4">
-          <h4 class="mr-8 md:inline">Area of School Campus</h4>
-          <span> 7.92 Acres or 291373.31 Square Metres.</span>
+      
+        <div class="mt-4 grid grid-cols-2">
+          <span class="mr-8 text-stone-600">Area of School Campus</span>
+          <span class="font-semibold"> 7.92 Acres or 291373.31 Square Metres.</span>
         </div>
         
         <hr class="mx-auto h-0.5 w-[75%] max-w-xl bg-sky-500 shadow-md my-4">
     </div>
 
-    <div class="mt-8 mx-auto w-fit max-w-2xl">
+    <div class="mt-8 mx-auto w-fit">
       <h3 class="-ml-2">
         Fee Structure (2022-23)
       </h3>
 
-      <table class="w-full border">
+      <table class="w-full max-w-4xl border">
         <colgroup>
           <col class="bg-slate-100"></col>
         </colgroup>
@@ -129,7 +149,7 @@
           Contact</a> school for enquiries regarding stages.
       </p>
       
-      <table class="mx-auto mt-2 w-full max-w-xl font-['Canela']">
+      <table class="mt-2 w-full mx-auto max-w-xl font-['Canela']">
         <colgroup>
           <col class="bg-slate-300">
           <col class="bg-slate-100">

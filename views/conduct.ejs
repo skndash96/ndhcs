@@ -12,6 +12,7 @@
   <script src="scripts/nav.js"></script>
 </head>
 <body>
+  <%- include("partials/loader"); %>
   <%- include("partials/header"); %>
   
   <main class="px-4 py-8 mx-auto max-w-2xl">
@@ -80,10 +81,20 @@
         Dress Code
       </h3>
       <p class="p-2">
-        Shirt (under ♀️ Jacket), Pant (under ♀️ Skirt), belt, tie (for boys) and pairs of socks and shoes (black/white) make up the dress code. Uniform material will be provided by the school upon admission.
+        Shirt (under <i class="fa-solid fa-mars"></i> Jacket), Pant (under <i class="fa-solid fa-venus"></i> Skirt), belt, tie (for boys) and pairs of socks and shoes (black/white) make up the dress code. Uniform material will be provided by the school upon admission.
         <br><br>Through the week, students should wear regular school uniform with blue socks and black shoes.
         <br>On Tuesdays and Thursdays, students should be dressed in Sports and House Dresses respectively with white socks and shoes.
       </p>
+      
+      <div class="mt-2 ml-4">
+        <h4 class="">House Systems</h4>
+        <ul class="mt-2 ml-4 text-lg font-semibold">
+          <li class="text-blue-700">André House</li>
+          <li class="text-amber-700">Dujarie House</li>
+          <li class="text-rose-800">Moreau House</li>
+          <li class="text-green-700">Notre Dame House</li>
+        </ul>
+      </div>
     </div>
 
     <div class="mt-4 mx-auto w-fit">

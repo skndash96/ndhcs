@@ -12,15 +12,19 @@
   <script src="scripts/nav.js"></script>
 </head>
 <body>
+  <%- include("partials/loader"); %>
   <%- include("partials/header"); %>
 
-  <section class="px-4 py-8 bg-slate-400 bg-[url('view.webp')] bg-cover bg-center flex flex-col justify-center items-center min-h-screen">
-    <h1 class="text-gray-50 drop-shadow-xl text-[calc(2rem+2vmax)] text-center">
-      Educating Heart And Mind
-    </h1>
+  <section class="px-4 py-8 bg-slate-400 bg-[url('view.webp')] bg-cover bg-center flex flex-col sm:flex-row justify-center items-center min-h-screen">
     <div class="">
-      <span class="inline-block text-amber-600 text-[10rem] translate-x-8 -translate-y-5 font-['Canela']">N</span>
-      <span class="inline-block text-amber-300 text-[10rem] -translate-x-8 translate-y-5 font-['Canela']">D</span>
+      <h1 class="text-gray-50 drop-shadow-xl text-[calc(2rem+2vmax)] text-center">
+        Educating Heart And Mind.
+      </h1>
+      <h2 class="mr-12 text-sky-100 text-right">Since 2008</h2>
+      <div class="text-center">
+        <span class="inline-block text-amber-600 text-[10rem] translate-x-8 -translate-y-5 font-['Canela']">N</span>
+        <span class="inline-block text-amber-300 text-[10rem] -translate-x-8 translate-y-5 font-['Canela']">D</span>
+      </div>
     </div>
   </section>
 
@@ -75,7 +79,7 @@
       </div>
 
       <p class="mt-4 max-w-xl text-left">
-        A <span class="font-semibold">prestigous institution</span> honing the skills and ability of our future citizens by fulfilling needs with good deeds. We aim at serving the mind and the heart to their fullest and thus <span class="font-semibold">satisfy those who seek us</span>. We are an organization with our destiny dertermined that is to carve our name at places via our students.
+        A <span class="font-semibold">prestigous <span class="blue-800">co-ed</span> institution</span> honing the skills and ability of our future citizens by fulfilling needs with good deeds. We aim at serving the mind and the heart to their fullest and thus <span class="font-semibold">satisfy those who seek us</span>. We are an organization with our destiny dertermined that is to carve our name at places via our students.
       </p>
 
       <h3 class="mt-4 font-bold">
@@ -97,8 +101,8 @@
     
     <div class="px-16 py-8 cardBox bg-slate-100">
       <div class="card">
-        <div class="h-32 imgBox bg-gray-50">
-          <img class="w-full h-full" src="academics.svg">
+        <div class="imgBox">
+          <img class="bg-gray-50" src="academics.svg">
         </div>
         <div class="content">
           <h4 class="font-bold">
@@ -109,8 +113,8 @@
       </div>
       
       <div class="card">
-        <div class="h-32 imgBox bg-gray-50">
-          <img class="w-full h-full" src="security.svg">
+        <div class="imgBox">
+          <img class="bg-gray-50" src="security.svg">
         </div>
         <div class="content">
           <h4 class="font-bold">
@@ -121,8 +125,8 @@
       </div>
        
       <div class="card">
-        <div class="h-32 imgBox bg-gray-50">
-          <img class="w-full h-full" src="laboratory.svg">
+        <div class="imgBox">
+          <img class="bg-gray-50" src="laboratory.svg">
         </div>
         <div class="content">
           <h4 class="font-bold">
@@ -133,8 +137,8 @@
       </div>
       
       <div class="card">
-        <div class="h-32 imgBox bg-gray-50">
-          <img class="w-full h-full" src="socialize.svg">
+        <div class="imgBox">
+          <img class="bg-gray-50" src="socialize.svg">
         </div>
         <div class="content">
           <h4 class="font-bold">
@@ -158,27 +162,27 @@
     <div id="testimonials" class="relative scroll-pl-4 px-28 flex flex-row gap-4">
       <div class="min-w-[16rem] h-fit scroll-start scroll-always p-3 bg-amber-200">
         <p>Notre Dame is an excellent place for learning and development of students. They serve a creative, supportive and productive environment. Education is treated as worship here. All the faculties are extremely supportive and knowledgeable. All the subjects as well as concepts are taught thoroughly using simple and easy methods.</p>
-        <span class="pt-2 block ml-auto font-amber-800 font-semibold text-right"> Primary Student </span>
+        <span class="pt-2 block ml-auto font-amber-800 font-semibold text-right"> <i class="mr-2 fa-solid fa-user-graduate"></i> Primary Student </span>
       </div>
       <div class="min-w-[16rem] h-fit scroll-start scroll-always p-3 bg-amber-200">
         <p>During these tough times when lives are seeing complete paradigm shift, children are going through a major transition and who else to comfort them apart from the parents but their teachers. We sincerely thank the efforts by the teachers to make this unknown difficult journey easier for our kids. We are very happy to have chosen the right institution.</p>
-        <span class="pt-2 block ml-auto font-amber-800 font-semibold text-right"> Father of High Schooler </span>
+        <span class="pt-2 block ml-auto font-amber-800 font-semibold text-right"> <i class="mr-2 fa-solid fa-user-tie"></i> Father of High Schooler </span>
       </div>
       <div class="min-w-[16rem] h-fit scroll-start scroll-always p-3 bg-amber-200">
         <p>There's real alchemy, the ingredients being the perpetual kindness, the thoughtfulness, the imagination, the fun, the skill and technique, the reassuring blend of modernity and glorious timelessness. The school serves goodwill, simple and traditional values, and joy. I know I am satisfied, but this is nothing but fantastic.</p>
-        <span class="pt-2 block ml-auto font-amber-800 font-semibold text-right"> Parent of Primary Schooler </span>
+        <span class="pt-2 block ml-auto font-amber-800 font-semibold text-right"> <i class="mr-2 fa-solid fa-user-tie"></i> Parent of Primary Schooler </span>
       </div>
       <div class="min-w-[16rem] h-fit scroll-start scroll-always p-3 bg-amber-200">
         <p>Notre Dame focuses on improving my son’s areas of need and really puts a huge emphasis on bolstering his individual strengths. The teachers are highly educated, thoughtful, and nurturing. They provide rigorous academic challenges, as well as the tools and strategies needed to face those challenges. I am so pleased and full to be a part of the fam.</p>
-        <span class="pt-2 block ml-auto font-amber-800 font-semibold text-right"> Parent of High Schooler </span>
+        <span class="pt-2 block ml-auto font-amber-800 font-semibold text-right"> <i class="mr-2 fa-solid fa-user-tie"></i> Parent of High Schooler </span>
       </div>
       <div class="min-w-[16rem] h-fit scroll-start scroll-always p-3 bg-amber-200">
         <p>It is a little jewel box of a school that is overflowing with love, kindness and a sense of service. My child has improved in a way that he never would have at any other school due to this excellent individualized and warm environment. Thanks for such an environment.</p>
-        <span class="pt-2 block ml-auto font-amber-800 font-semibold text-right"> Parent of Middle Schooler </span>
+        <span class="pt-2 block ml-auto font-amber-800 font-semibold text-right"> <i class="mr-2 fa-solid fa-user-tie"></i> Parent of Middle Schooler </span>
       </div>
       <div class="min-w-[16rem] h-fit scroll-end scroll-always p-3 bg-amber-200">
         <p>Never thought schools can be so amazing! Studying at Notre Dame has always been fun even in pandemics. We missed school days instead of holidays because teachers are so co-operative and engaging that two years are not enough to assimilate their knowledge.</p>
-        <span class="pt-2 block ml-auto font-amber-800 font-semibold text-right"> High School Student </span>
+        <span class="pt-2 block ml-auto font-amber-800 font-semibold text-right"> <i class="mr-2 fa-solid fa-user-graduate"></i> High School Student </span>
       </div>
     </div>
     </div>

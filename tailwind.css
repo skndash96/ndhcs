@@ -38,6 +38,12 @@
 }
 
 @layer components {
+  #loader.close {
+    @apply -translate-x-full;
+  }
+  #loader.hide {
+    @apply hidden;
+  }
   #nav.open {
     max-height: 80vh !important;
   }
@@ -55,32 +61,21 @@
     @apply w-fit mx-auto;
   }
   .card {
-    @apply mt-4 mx-auto flex flex-col sm:flex-row items-center gap-4;
+    @apply mt-4 mx-auto grid grid-cols-1 md:grid-cols-[1fr_2fr] items-center gap-4;
   }
-  .card imgBox {
-    @apply relative w-fit shrink-0 sm:self-end;
+  .card .imgBox {
+    @apply relative mx-auto sm:self-end;
+  }
+  .card .imgBox img {
+    @apply w-32 h-32 mx-auto;
   }
   .card content {
-    @apply content-start;
+    @apply content-start max-w-md;
   }
 }
 
 @layer utilities {
-  .path-arrow-down {
-    clip-path: polygon(0 0, 0 60% , 100% 100%, 100% 0);
-  }
-}
-
-@keyframes nav-spn {
-  30% {
-    transform: rotate(-60deg)
-  },
-  70% {
-    transform: rotate(180deg)
-  },
-  100% {
-    transform: rotate(135deg)
-  }
+  
 }
 
 @font-face {
