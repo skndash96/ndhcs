@@ -61,16 +61,13 @@
     @apply w-fit mx-auto;
   }
   .card {
-    @apply mt-4 mx-auto grid grid-cols-1 md:grid-cols-[1fr_2fr] items-center gap-4;
+    @apply mt-4 mx-auto grid grid-cols-1 md:grid-cols-[1fr_2fr] justify-center items-center gap-4;
   }
   .card .imgBox {
-    @apply relative mx-auto sm:self-end;
+    @apply relative mx-auto;
   }
   .card .imgBox img {
     @apply w-32 h-32 mx-auto;
-  }
-  .card content {
-    @apply content-start max-w-md;
   }
 }
 

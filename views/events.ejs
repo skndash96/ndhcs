@@ -15,9 +15,58 @@
   <%- include("partials/loader"); %>
   <%- include("partials/header"); %>
   
-  <main class="px-4 py-8 mx-auto w-fit max-w-2xl">
-    <h2 class="font-semibold">
-      Latest Circulars
+  <main class="">
+    <section class="p-8 bg-amber-100">
+    <h2 class="font-semibold text-center">
+      Latest News
+    </h2>
+
+    <div class="mt-8 w-fit mx-auto max-w-2xl grid sm:grid-cols-2 gap-4">
+      <% news.forEach((v, i) => { %>
+        <div class="
+          <% if (i>3) { %> max-md:hidden <% } %> 
+          relative flex gap-4 items-center bg-gray-50">
+          <div class="inline-block p-2 text-center bg-blue-400 text-gray-50">
+            <h2 class="font-['Courier'] font-black">
+              <%= ("0"+v.time.getDate().toString()).slice(-2) %>
+            </h2>
+            <h4 class="font-black">
+              <%= v.time.toLocaleString("default", { month: "short"}) %>
+            </h4>
+          </div>
+          <h4 class="px-1">
+            <%= v.name %>
+          </h4>
+        </div>
+      <% }) %>
+    </div>
+    </section>
+    
+    <section class="p-4">
+    <h2 class="mt-4 font-semibold text-center">
+      Events
+    </h2>
+
+    <% events.forEach(e => { %>
+      <hr class="mt-8 h-1 w-full mx-auto max-w-xs bg-sky-500">
+      <h2 class="mt-4 font-semibold text-center">
+        <%= e[0] %>
+      </h2>
+      <div class="mt-4 grid grid-flow-dense grid-cols-2 md:grid-cols-3 gap-2 w-fit mx-auto max-w-2xl">
+        <% e[1].forEach((url,i) => { %>
+          <div class="
+            <% if (i==2) { %> col-span-2 <% } %> 
+            <% if (i==4) { %> row-span-2 <% } %> 
+            bg-slate-700">
+            <img src="<%=url%>" class="w-full h-full">
+          </div>
+        <% }) %>
+      </div>
+    <% }) %>
+    </section>
+
+    <h2 class="my-8 font-semibold text-center">
+      Stay Tuned for upcoming events!
     </h2>
   </main>
 

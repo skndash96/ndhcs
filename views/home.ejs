@@ -15,7 +15,7 @@
   <%- include("partials/loader"); %>
   <%- include("partials/header"); %>
 
-  <section class="px-4 py-8 flex flex-col justify-center items-center bg-slate-400 bg-[url('view.webp')] bg-cover bg-center min-h-screen">
+  <section class="px-4 py-12 flex flex-col justify-center items-center bg-slate-400 bg-[url('view.webp')] bg-cover bg-center min-h-screen">
     <div class="">
       <h1 class="text-gray-50 drop-shadow-xl text-5xl text-center">
         Educating Heart And Mind.
@@ -23,16 +23,16 @@
       <h2 class="mr-12 text-sky-100 text-right">Since 2008</h2>
     </div>
    
-    <div class="w-fit mx-auto sm:flex">
+    <div class="mt-4 w-fit mx-auto sm:flex sm:justify-center sm:items-center">
       <div class="shrink-0 text-center">
         <span class="inline-block text-amber-600 text-[10rem] translate-x-8 -translate-y-5 font-['Canela']">N</span>
         <span class="inline-block text-amber-300 text-[10rem] -translate-x-8 translate-y-5 font-['Canela']">D</span>
       </div>
       
-      <div>
+      <div class="max-w-md">
         <div class="p-4 hidden sm:block bg-neutral-800/25 text-gray-50">
           <h1 class="">
-            One of the Best School available.
+            We are not just any School, We are one of the <span class="inline-block border-b-2 border-yellow-400 border-offset-3">Best</span>.
           </h1>
           <p class=""> We provide our students our utmost persistent care for the betterment of their future. </p>
           <div class="mt-4 font-semibold">
@@ -65,16 +65,7 @@
     
     <div class="mt-4 w-fit mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <% ([
-        { time: new Date(), name: "Annual Day Circular", link: "" },
-        { time: new Date(2022, 10, 2), name: "Math Bee Winners", link: "" },
-        { time: new Date(2022, 9, 27), name: "PTA Meeting 4 2022", link: "" },
-        { time: new Date(2022, 9, 19), name: "Essay Writing Competition Topics", link: "" },
-        { time: new Date(2022, 9, 1), name: "Fancy Dress Circular", link: "" },
-        { time: new Date(2022, 8, 22), name: "Kalothsav Information", link: "" },
-        { time: new Date(2022, 8, 21), name: "Diwali Celeberation", link: "" },
-        { time: new Date(2022, 9, 19), name: "Sahodaya Football", link: "" }
-      ]).slice(0, 8).forEach((v, i) => { %>
+      <% news.slice(0, 8).forEach((v, i) => { %>
         <div class="
           <% if (i>3) { %> max-md:hidden <% } %> 
           relative flex gap-4 items-center bg-gray-50">
