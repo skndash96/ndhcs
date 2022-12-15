@@ -7,7 +7,6 @@ function loadEvents(db, storage) {
   const events = localStorage["events"] && JSON.parse(localStorage["events"])
   if (events && events[0] > Date.now()) {
     writeEvs(events.slice(1))
-    spinner.classList.add("hidden")
   }
   else {
     db.collection("events").orderBy("date", "desc").limit(10).get()
@@ -16,7 +15,6 @@ function loadEvents(db, storage) {
       docs.forEach(doc => events.push(doc.data()))
       localStorage["events"] = JSON.stringify(events)
       writeEvs(events.slice(1))
-      spinner.classList.add("hidden")
     })
     .catch(e => {
       console.error(e)
@@ -60,6 +58,9 @@ function loadEvents(db, storage) {
         return el
       }
     }))
-    .then(evs => eventsEl.append(...evs))
+    .then(evs => {
+      eventsEl.append(...evs)
+      spinner.classList.add("hidden")
+    })
   }
 }
