@@ -9,7 +9,6 @@
   <title>Notre Dame Salem</title>
 
   <script src="https://kit.fontawesome.com/f3339b4404.js" crossorigin="anonymous"></script>
-  <script src="scripts/nav.js"></script>
 </head>
 <body>
   <%- include("partials/loader"); %>
@@ -21,9 +20,13 @@
     <h2 class="mt-4 font-bold text-center">
       500 - Server Error
     </h2><br>
-    
+
+    <div class="relative w-fit group">
+      <i class="fa-solid fa-circle-info"></i>
+      <div id="message" class="z-10 p-2 hidden group-hover:block absolute -top-2 -translate-y-full -right-2 bg-slate-800 text-gray-50"></div>
+    </div>
     <p class="mt-4">Something went wrong! The mistake is probably on our side and it'll be fixed it. Try again after sometime.</p>
-    <p class="mt-4">Why don't you go to the homepage and look what you are looking for or grab something better? Seems like a good idea.</p>
+    <p class="mt-4">Why don't you go to the homepage and look for something better? Seems like a good idea.</p>
     
     <a href="/home" class="mt-4 p-1 inline-block shadow-md bg-sky-600 text-gray-50">
       <i class="mr-2 fa-solid fa-angle-right"></i> Home Page
@@ -31,5 +34,23 @@
   </main>
 
   <%- include("partials/footer"); %>
+  <script src="scripts/index.js"></script>
+  <script>
+    window.addEventListener("load", () => {
+      const errorMessage = document.getElementById("message")
+      
+      const queryString = {}
+      if (window.location.href.split('?').length > 1) {
+        const params = window.location.search.split('?')[1].split('&');
+        for (let i = 0; i < params.length; i++) {
+          let [key, value] = params[i].split('=');
+          queryString[key] = decodeURIComponent(value);
+        }
+      }
+      if (queryString["m"] != null) {
+        errorMessage.innerHTML = queryString["m"]
+      }
+    })
+  </script>
 </body>
 </html>

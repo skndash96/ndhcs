@@ -9,7 +9,6 @@
   <title>Notre Dame Salem</title>
 
   <script src="https://kit.fontawesome.com/f3339b4404.js" crossorigin="anonymous"></script>
-  <script src="scripts/nav.js"></script>
 </head>
 <body>
   <%- include("partials/loader"); %>
@@ -60,30 +59,15 @@
 
   <section class="px-4 py-8 bg-amber-100">
     <h2 class="text-center font-extrabold">
-      News & Events
+      News & Events <button id="reloadNews" class="ml-2 text-lg text-slate-500 hover:bg-sky-300/50"><i class="fa-solid fa-arrows-rotate"></i></button>
     </h2>
     
     <div class="mt-4 w-fit mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <% news.slice(0, 8).forEach((v, i) => { %>
-        <div class="
-          <% if (i>3) { %> max-md:hidden <% } %> 
-          relative flex gap-4 items-center bg-gray-50">
-          <div class="inline-block p-2 text-center bg-blue-400 text-gray-50">
-            <h2 class="font-['Courier'] font-black">
-              <%= ("0"+v.time.getDate().toString()).slice(-2) %>
-            </h2>
-            <h4 class="font-black">
-              <%= v.time.toLocaleString("default", { month: "short"}) %>
-            </h4>
-          </div>
-          <h4 class="px-1">
-            <%= v.name %>
-          </h4>
+      <div id="news" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div id="newsSpinner" class="">
+          <i class="mr-2 fa-solid fa-spinner animate-spin"></i> Loading...
         </div>
-      <% }) %>
       </div>
-
       <a referrerpolicy="origin" href="https://m.youtube.com/@ndhcsmedia5640" class="mt-8 inline-block underline text-amber-900 text-lg">
         <i class="mr-2 fa-brands fa-youtube"></i>Checkout Youtube
       </a> <br>
@@ -97,7 +81,7 @@
   <section class="px-4 pt-8 pb-16">
     <h1 class="text-blue-900 font-extrabold text-center"> Who We Are </h1>
     
-    <div class="relative p-2 w-fit mx-auto">
+    <div class="relative p-2 w-fit mx-auto max-w-xl">
       <div class="relative overflow-hidden w-full h-32">
         <!--<a href="https://www.freepik.com/free-vector/illustration-business-people-meeting_3236148.htm#query=team&position=8&from_view=search&track=sph">Image by rawpixel.com</a> on Freepik-->
         <img class="w-full h-full" src="team.svg" alt="Team">
@@ -273,6 +257,39 @@
   </section>
 
   <%- include("partials/footer"); %>
-
+  <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  
+  <script src="scripts/index.js"></script>
+  <script src="scripts/loadnews.js"></script>
+  <script>
+    window.addEventListener("load", () => {
+      const firebaseappConfig = {
+        apiKey: "AIzaSyB9S-lwz4yOHcajjQmFD8Qj9AynV-wZ0A0",
+        authDomain: "ndhcs-361bf.firebaseapp.com",
+        projectId: "ndhcs-361bf",
+        storageBucket: "ndhcs-361bf.appspot.com",
+        messagingSenderId: "644967053944",
+        appId: "1:644967053944:web:ff6463c5e53ed7c0c5cb8d",
+        measurementId: "G-4QGDHBZP09"
+      }
+    
+      const app = firebase.initializeApp(firebaseappConfig)
+      const analytics = firebase.analytics(app)
+      const db = firebase.firestore(app)
+      
+      const newsSpinner = document.getElementById("newsSpinner")
+      document.getElementById("reloadNews")
+        .addEventListener("click", e => {
+          e.target.disabled = true
+          newsSpinner.classList.remove("hidden")
+          loadNews(db, true, true)
+          e.target.remove()
+        })
+      
+      loadNews(db, false)
+    })
+  </script>
 </body>
 </html>

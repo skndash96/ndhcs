@@ -1,14 +1,11 @@
-window.addEventListener("load", main)
+window.addEventListener("load", () => {
+  document.getElementById("loader")?.classList.add("close")
 
-function main() {
-  document.getElementById("loader")
-    .classList.add("close")
-
-  setTimeout(() => document.getElementById("loader").classList.add("hide"), 500)
+  setTimeout(() => document.getElementById("loader")?.remove(), 500)
   
   document.getElementById("navToggle")
     .addEventListener("click", () => toggleNav())
-}
+})
 
 function toggleNav(close) {
   const nav = document.getElementById("nav")
