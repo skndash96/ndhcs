@@ -23,8 +23,8 @@ function loadEvents(db, storage) {
   }
 
   function writeEvs(docs) {
-    while (eventsEl.childNodes.length > 1) {
-      eventsEl.removeChild(eventsEl.lastChild)
+    while (eventsEl.children.length > 1) {
+      eventsEl.removeChild(eventsEl.lastElementChild)
     }
     
     Promise.all(docs.map(async ({title,date,dir}) => {
@@ -46,7 +46,7 @@ function loadEvents(db, storage) {
         for (let i = 0; i < results.items.length; i++) {
           let url = await results.items[i].getDownloadURL()
           let el = document.createElement("div")
-          el.className = `${i===1 ? "row-span-2" : ""} ${i===3 ? "col-span-2" : ""} bg-slate-700`
+          el.className = `${i===1 ? "row-span-2" : ""} ${i===3 ? "col-span-2" : ""} min-h-[10rem] bg-slate-700`
           el.innerHTML = `<img src="${url}" loading="lazy" class="w-full h-full">`
           els.push(el)
         }

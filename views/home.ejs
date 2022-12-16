@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="favicon.ico">
-  <link rel="stylesheet" href="out.css">
   <title>Notre Dame Salem</title>
 
+  <%- include("partials/head"); %>
+  
+  <link rel="stylesheet" href="out.css">
   <script src="https://kit.fontawesome.com/f3339b4404.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -68,11 +66,11 @@
           <i class="mr-2 fa-solid fa-spinner animate-spin"></i> Loading...
         </div>
       </div>
-      <a referrerpolicy="origin" href="https://m.youtube.com/@ndhcsmedia5640" class="mt-8 inline-block underline text-amber-900 text-lg">
+      <a href="https://m.youtube.com/@ndhcsmedia5640" class="mt-8 inline-block underline text-amber-900 text-lg">
         <i class="mr-2 fa-brands fa-youtube"></i>Checkout Youtube
       </a> <br>
 
-      <a href="/events" class="mt-2 px-2 py-1 inline-block shadow-md bg-sky-600 font-bold text-lg text-neutral-100">
+      <a href="/events" class="mt-2 classic">
         <i class="fa-solid fa-angle-right mr-2"></i> More
       </a>
     </div>
@@ -95,7 +93,7 @@
         We Contribute to the Greater Society.
       </h3>
 
-      <a href="/about" class="mt-4 inline-block shadow-md px-2 py-1 bg-sky-600 font-bold text-neutral-100">
+      <a href="/about" class="mt-4 classic">
         <i class="fa-solid fa-angle-right mr-2"></i>Learn More
       </a>
     </div>
@@ -156,6 +154,10 @@
           <p class="max-w-xl"> We try to invoke a sense of integration among the teachers, students as well as the parents/guardians. This consequently enhances communication and social skills in children. </p>
         </div>
       </div>
+
+      <a href="/facility" class="mt-4 w-fit mx-auto classic">
+        More
+      </a>
     </div>
     
   </section>

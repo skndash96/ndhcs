@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="favicon.ico">
-  <link rel="stylesheet" href="out.css">
   <title>Notre Dame Salem</title>
 
+  <%- include("partials/head"); %>
+  
+  <link rel="stylesheet" href="out.css">
   <script src="https://kit.fontawesome.com/f3339b4404.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -28,7 +26,7 @@
     <p class="mt-4">Something went wrong! The mistake is probably on our side and it'll be fixed it. Try again after sometime.</p>
     <p class="mt-4">Why don't you go to the homepage and look for something better? Seems like a good idea.</p>
     
-    <a href="/home" class="mt-4 p-1 inline-block shadow-md bg-sky-600 text-gray-50">
+    <a href="/home" class="mt-4 classic">
       <i class="mr-2 fa-solid fa-angle-right"></i> Home Page
     </a>
   </main>

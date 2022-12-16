@@ -11,7 +11,7 @@
     font-size: calc(0.74rem + 0.74vw);
   }
   body {
-    @apply min-h-screen flex flex-col justify-between font-['Galeana'];
+    @apply min-h-screen flex flex-col justify-between font-['Cabin'];
     background-color: white;
   }
   h1, h2, h3, h4, h5, h6 {
@@ -69,6 +69,9 @@
   .card .imgBox img {
     @apply w-32 h-32 mx-auto;
   }
+  button.classic, a.classic {
+    @apply inline-block bg-sky-600 text-gray-50 px-2 py-1 font-semibold shadow-md hover:shadow-lg hover:scale-95;
+  }
 }
 
 @layer utilities {
@@ -77,16 +80,16 @@
 
 @font-face {
   font-family: "Canela";
-  src: url("canela.otf")
+  src: url("fonts/Canela.otf")
 }
 
 @font-face {
   font-family: "Courier";
-  src: url("Courier Prime.ttf")
+  src: url("fonts/CourierPrime.ttf")
 }
 
 @font-face {
-  font-family: "Galeana";
-  src: url("galeana.otf");
-  unicode-range: U+0041-005A, U+0061-007A;
+  font-family: "Cabin";
+  src: url("fonts/CabinRegular.ttf");
+  size-adjust: 110%;
 }

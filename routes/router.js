@@ -7,6 +7,9 @@ const files = fs.readdirSync(path.join(__dirname, "../views"))
 for (let file of files) {
   Router.get(
     `/${file.split(".")[0]}`, (req, res) => {
+    if (file.startsWith("404")) res.status(404)
+    else if (file.startsWith("500")) res.status(500)
+    
     res.render(
       path.join(__dirname, `../views/${file}`),
       { page: file },

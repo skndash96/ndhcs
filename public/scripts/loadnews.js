@@ -36,15 +36,15 @@ function loadNews(db, storage, showMany = true, force = false) {
       date = new Date(date.seconds*1000)
       
       let el = document.createElement("div")
-      el.className = `${(showMany ? i > 9 : i > 3) ? "max-md:hidden " : ""}relative flex gap-4 items-center bg-gray-50`
+      el.className = `${(showMany ? i > 9 : i > 3) ? "max-md:hidden " : ""}relative flex gap-4 items-center shadow-sm bg-gray-50 hover:shadow-md hover:bg-slate-300`
       el.innerHTML = `
         <div class="inline-block p-2 text-center bg-blue-400 text-gray-50">
-        <h2 class="font-['Courier'] font-black">
-          ${("0"+date.getDate().toString()).slice(-2)}
-        </h2>
-        <h4 class="font-black">
-          ${date.toLocaleString("default", { month: "short"})}
-        </h4>
+          <h2 class="font-['Courier'] font-black">
+            ${("0"+date.getDate().toString()).slice(-2)}
+          </h2>
+          <h4 class="font-black">
+            ${date.toLocaleString("default", { month: "short"})}
+          </h4>
         </div>
         <h4 class="px-1 dark:text-neutral-900">
           ${title}
