@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /admin
 Disallow: /auth
-Sitemap: https://ndhcs.herokuapp.com/sitemap.xml
+Sitemap: https://www.notredamehcs.ga/sitemap.xml
