@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Facility - Notre Dame Salem</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="title" content="Notre Dame">
+<meta name="description" content="Educating Heart and Mind since 2008. We are Notre Dame Of Holy Cross School CBSE, Gundukalloor, Salem - 140.">
+<meta name="author" content="Dash Skndash">
+<meta property="og:title" content="Notre Dame">
+<meta property="og:description" content="Educating Heart and Mind since 2008. We are Notre Dame Of Holy Cross School CBSE, Gundukalloor, Salem - 140.">
+<meta property="og:image" content="https://ndhcs.herokuapp.com/images/banner.jpg">
+<meta property="og:url" content="https://ndhcs.herokuapp.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="images/favicon.ico">
+<link rel="stylesheet" href="out.css">
+<script src="https://kit.fontawesome.com/f3339b4404.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="loader" class="fixed z-50 w-screen h-screen transition-all bg-sky-100">
+<div class="absolute top-1/3 left-1/2 -translate-x-1/2 grid place-items-center">
+<h1 class="block relative text-[6rem] text-amber-500 font-[none]">
+<div class="w-[100vmax] h-[100vmax] rounded-full scale-0 animate-scaleup absolute top-[50%] left-[50%] bg-sky-400/50"></div>
+<img src="images/logo.png" fetchpriority="high">
+</h1>
+</div>
+</div>
+<header id="header" class="sticky top-0 z-20 flex justify-between shadow-xl bg-gradient-to-r from-sky-800 via-sky-900 to-blue-900 text-gray-50">
+<a href="/home" class="ml-2 my-1 block flex gap-2">
+<img src="images/logo.png" class="w-6 h-6">
+<h4 class="font-black font-['Canela']">
+Notre Dame
+</h4>
+</a>
+<nav id="nav" class="max-md:absolute max-md:backdrop-blur-sm max-md:transition-all max-md:max-h-0 md:open max-md:overflow-hidden max-md:left-0 max-md:right-0 max-md:bottom-0 max-md:translate-y-full max-md:bg-sky-500/75 text-gray-50">
+<ul class="ml-auto max-md:mt-4 max-md:px-4 w-fit flex flex-col gap-y-2 md:flex-row items-end font-['Canela'] max-md:text-lg">
+<li class="px-2 py-1 max-md:font-bold hover:border-b-2 border-rose-600 transition-all md:hover:bg-sky-300 md:hover:text-blue-900">
+<a href="/home"> Home </a>
+</li>
+<li class="px-2 py-1 max-md:font-bold hover:border-b-2 border-rose-600 transition-all md:hover:bg-sky-300 md:hover:text-blue-900">
+<a href="/about"> About </a>
+</li>
+<li class="px-2 py-1 max-md:font-bold hover:border-b-2 border-rose-600 transition-all md:hover:bg-sky-300 md:hover:text-blue-900">
+<a href="/events"> Events </a>
+</li>
+<li class="px-2 py-1 max-md:font-bold hover:border-b-2 border-rose-600 transition-all md:hover:bg-sky-300 md:hover:text-blue-900">
+<a href="/facility"> Student Life </a>
+</li>
+<li class="px-2 py-1 max-md:font-bold hover:border-b-2 border-rose-600 transition-all md:hover:bg-sky-300 md:hover:text-blue-900">
+<a href="/conduct"> Conduct </a>
+</li>
+<li class="px-2 py-1 max-md:font-bold hover:border-b-2 border-rose-600 transition-all md:hover:bg-sky-300 md:hover:text-blue-900">
+<a href="/details"> Details </a>
+</li>
+<li class="px-2 py-1 max-md:font-bold hover:border-b-2 border-rose-600 transition-all md:hover:bg-sky-300 md:hover:text-blue-900">
+<a onclick="toggleNav(true)" href="#footer"> Contact </a>
+</li>
+</ul>
+<h6 class="md:hidden my-4 px-2 text-right">
+Notre Dame Of Holy Cross School, <br>
+Udayapatti, Salem - 140.
+</h6>
+</nav>
+<button id="navToggle" class="md:hidden p-1">
+MENU
+</button>
+</header>
+<main class="p-4">
+<h2 class="font-semibold text-center">
+Student Facility
+</h2>
+<h3 class="mt-2 text-center">
+Life is for <span class="relative inline-block after:absolute after:left-0 after:-bottom-[3.24rem] after:w-16 after:h-14 after:border-2 after:border-x-transparent after:border-b-transparent after:border-t-sky-600 after:rounded-full">Service</span>. Our Reputation goes by It.
+</h3>
+<div class="mt-4 mx-auto max-w-2xl w-full sm:grid sm:gap-x-4 sm:grid-cols-2 md:grid-cols-3">
+<div class="mt-8 grid grid-rows-[1fr_auto-fit] text-stone-800  md:grid-rows-1 md:grid-cols-2 sm:col-span-2 md:col-span-3">
+<div class="w-full h-full bg-slate-200">
+<img loading="lazy" src="images/pinaaccle.webp" class="w-full h-full object-cover object-left-bottom">
+</div>
+<div class="mt-2 sm:ml-2 p-2">
+<h2 class="font-semibold">
+Pinaacle Classes
+</h2>
+<p class="mt-2">The School has tied up with a recongnised institute - Pinaacle Coaching Institute in order to train pupils for IIT/JEE or NEET entrance exams. A section of class is segregated for the pinaacle students wherein expertised teachers teach beyond NCERT syllabus. </p>
+</div>
+</div>
+<div class="mt-8 grid grid-rows-[1fr_auto-fit] text-stone-800">
+<div class="w-full h-full bg-slate-200">
+<img loading="lazy" src="images/bus.webp" class="w-full h-full object-cover object-center">
+</div>
+<div class="mt-2 p-2">
+<h2 class="font-semibold">
+Transportation
+</h2>
+<p class="mt-2">Transport system by bus is provided to the students. They support upto 60 students per bus. Buses have GPS and Bus Governer Installed for better and safer transport experience. </p>
+</div>
+</div>
+<div class="mt-8 grid grid-rows-[1fr_auto-fit] text-stone-800">
+<div class="w-full h-full bg-slate-200">
+<img loading="lazy" src="images/library.webp" class="w-full h-full object-cover object-center">
+</div>
+<div class="mt-2 p-2">
+<h2 class="font-semibold">
+Library
+</h2>
+<p class="mt-2">Library is provisioned to serve simply more knowledge to students. Students can access the library and undertake a certain number of books at a time. Curricular Guides, Facts, Dictionaries, Novels, Comics, Biographies etc. would be available at pupil's fingertips. </p>
+</div>
+</div>
+<div class="mt-8 grid grid-rows-[1fr_auto-fit] text-stone-800">
+<div class="w-full h-full bg-slate-200">
+<img loading="lazy" src="images/av.webp" class="w-full h-full object-cover object-center">
+</div>
+<div class="mt-2 p-2">
+<h2 class="font-semibold">
+SmartBoards
+</h2>
+<p class="mt-2">Smart boards or smart classrooms are installed so that students get a visual idea of what's being taught. Selective videos and demonstrations are played to the students in Smartboards. </p>
+</div>
+</div>
+<div class="mt-8 grid grid-rows-[1fr_auto-fit] text-stone-800">
+<div class="w-full h-full bg-slate-200">
+<img loading="lazy" src="images/ground.webp" class="w-full h-full object-cover object-center">
+</div>
+<div class="mt-2 p-2">
+<h2 class="font-semibold">
+Playground
+</h2>
+<p class="mt-2">Considering physical health Physical Exercise periods exist during which pupils can play in the spacious playground. Students can also join any of the teams if they excel at - Basketball, Volleyball, Football, Cricket and Kho-Kho. On their own interest, they can sign up for evening coaching classes.</p>
+</div>
+</div>
+<div class="mt-8 grid grid-rows-[1fr_auto-fit] text-stone-800">
+<div class="w-full h-full bg-slate-200">
+<img loading="lazy" src="images/auditorium.webp" class="w-full h-full object-cover object-center">
+</div>
+<div class="mt-2 p-2">
+<h2 class="font-semibold">
+Auditorium
+</h2>
+<p class="mt-2">We have a spacious aditorium that could hold more than two thousand people. Weekly gatherings and festive celeberations are held in the auditorium.</p>
+</div>
+</div>
+<div class="mt-8 grid grid-rows-[1fr_auto-fit] text-stone-800">
+<div class="w-full h-full bg-slate-200">
+<img loading="lazy" src="images/it.webp" class="w-full h-full object-cover object-center">
+</div>
+<div class="mt-2 p-2">
+<h2 class="font-semibold">
+Laboratories
+</h2>
+<p class="mt-2">Students are taken to Science(Phy, Chem, Bio) Laboratories to do or witness experiments. Students can also undertake things that are available in the laboratory and return it after use. </p>
+</div>
+</div>
+</div>
+<div class="mt-8 w-fit mx-auto sm:grid sm:grid-cols-2">
+<div class="flex flex-col">
+<div class="p-2 grid grid-cols-[1fr_4fr] gap-2 bg-sky-700">
+<i class="justify-self-center fa-solid fa-toilet-portable text-4xl text-yellow-400"></i>
+<span class="h-fit self-center font-semibold text-gray-50">Gratifying Restrooms</span>
+</div>
+<div class="p-2 grid grid-cols-[1fr_4fr] gap-2">
+<i class="justify-self-center fa-solid fa-hand-sparkles text-4xl text-sky-700"></i>
+<span class="h-fit self-center font-semibold">Tidy Environment</span>
+</div>
+<div class="p-2 grid grid-cols-[1fr_4fr] gap-2 bg-sky-700">
+<i class="justify-self-center fa-solid fa-shield-halved text-4xl text-yellow-400"></i>
+<span class="h-fit self-center font-semibold text-gray-50">Secure vicinity</span>
+</div>
+<div class="p-2 grid grid-cols-[1fr_4fr] gap-2">
+<i class="justify-self-center fa-solid fa-key text-4xl text-sky-700"></i>
+<span class="h-fit self-center font-semibold">Satisfying Teachers</span>
+</div>
+<div class="p-2 grid grid-cols-[1fr_4fr] gap-2 bg-sky-700">
+<i class="justify-self-center fa-solid fa-heart-pulse text-4xl text-yellow-400"></i>
+<span class="h-fit self-center font-semibold text-gray-50">Infirmary for Aids</span>
+</div>
+</div>
+<div class="flex flex-col">
+<div class="p-2 grid grid-cols-[1fr_4fr] gap-2">
+<i class="justify-self-center fa-solid fa-flask-vial text-4xl text-sky-700"></i>
+<span class="h-fit self-center font-semibold">Content Laboratories</span>
+</div>
+<div class="p-2 grid grid-cols-[1fr_4fr] gap-2 bg-sky-700">
+<i class="justify-self-center fa-solid fa-calendar-check text-4xl text-yellow-400"></i>
+<span class="h-fit self-center font-semibold text-gray-50">Eye-sweetening Events</span>
+</div>
+<div class="p-2 grid grid-cols-[1fr_4fr] gap-2">
+<i class="justify-self-center fa-solid fa-fire-flame-curved text-4xl text-sky-700"></i>
+<span class="h-fit self-center font-semibold">Sports & Activities</span>
+</div>
+<div class="p-2 grid grid-cols-[1fr_4fr] gap-2 bg-sky-700">
+<i class="justify-self-center fa-solid fa-spa text-4xl text-yellow-400"></i>
+<span class="h-fit self-center font-semibold text-gray-50">Mental Health Counsellor</span>
+</div>
+<div class="p-2 grid grid-cols-[1fr_4fr] gap-2">
+<i class="justify-self-center fa-solid fa-bacon text-4xl text-sky-700"></i>
+<span class="h-fit self-center font-semibold">Healthy Snacks & Lunch</span>
+</div>
+</div>
+</div>
+<h3 class="my-8 text-center">
+We always try to give people more than what they expect us to give.
+</h3>
+</main>
+<footer id="footer" class="sm:flex sm:flex-row-reverse bg-slate-900 text-slate-200">
+<div class="relative w-full sm:max-w-[50%] bg-slate-700">
+<iframe class="w-full h-full" src="https://maps.google.com/maps?q=notre%20dame%20Salem&t=k&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" marginheight="0" marginwidth="0"></iframe>
+</div>
+<div class="p-8 mx-auto w-fit flex flex-col gap-3 text-sm">
+<div>
+<i class="mr-2 text-sky-300 fa-solid fa-earth-asia"></i>
+<span>Notre Dame of HolyCross School [CBSE], <br>Gundukalloore, Salem - 636 140, Tamil Nadu.</span>
+</div>
+<div>
+<i class="mr-2 text-sky-300 fa-solid fa-phone"></i>
+<span class="text-slate-300">+91 427-2241800</span> <span class="text-slate-400 font-thin text-xs">Primary School</span>
+<a class="text-slate-400 ml-2" href="tel:+914272241800"><i class="fa-solid fa-up-right-from-square"></i></a>
+</div>
+<div>
+<i class="mr-2 text-sky-300 fa-solid fa-phone"></i>
+<span class="text-slate-300">+91 427-2241803</span>
+<a class="text-slate-400 ml-2" href="tel:+914272241803"><i class="fa-solid fa-up-right-from-square"></i></a>
+</div>
+<div>
+<i class="mr-2 text-sky-300 fa-regular fa-envelope"></i>
+<span>notredamehcs@gmail.com</span>
+<a class="text-slate-400 ml-2" href="mailto:notredamehcs@gmail.com"><i class="fa-solid fa-up-right-from-square"></i></a>
+</div>
+<div class="mt-4">
+<i class="text-rose-600 mr-2 text-xl fa-brands fa-youtube"></i>
+<span class="text-rose-300">Check out latest events on YouTube!</span>
+</div>
+<p class="mt-4 text-center text-xs">
+Copyright © 2022 <br> Design & Development by
+<a>Dash Skndash.</a>
+</p>
+</div>
+</footer>
+<script src="scripts/index.js"></script>
+</body>
+</html>

@@ -1,3 +1,8 @@
 node_modules/
 .git/
 .config/
+
+./*
+!.gitignore
+!README.md
+!dist/

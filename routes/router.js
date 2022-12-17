@@ -12,7 +12,7 @@ for (let file of files) {
     
     res.render(
       path.join(__dirname, `../views/${file}`),
-      { page: file },
+      null,
       (e, html) => {
         if (e) {
           console.error(e)

@@ -3,14 +3,14 @@
 <head>
   <title>Notre Dame Salem</title>
 
-  <%- include("partials/head"); %>
+  <%- include("partials/head.ejs"); %>
   
   <link rel="stylesheet" href="out.css">
   <script src="https://kit.fontawesome.com/f3339b4404.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <%- include("partials/loader"); %>
-  <%- include("partials/header"); %>
+  <%- include("partials/loader.ejs"); %>
+  <%- include("partials/header.ejs"); %>
   
   <main class="px-4 py-8 mx-auto w-fit max-w-2xl">
     <i class="block mx-auto text-amber-500 text-7xl fa-solid fa-triangle-exclamation"></i>
@@ -27,7 +27,7 @@
     </a>
   </main>
 
-  <%- include("partials/footer"); %>
+  <%- include("partials/footer.ejs"); %>
   <script src="scripts/index.js"></script>
 </body>
 </html>

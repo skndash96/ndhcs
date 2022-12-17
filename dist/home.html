@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Notre Dame Salem</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="title" content="Notre Dame">
+<meta name="description" content="Educating Heart and Mind since 2008. We are Notre Dame Of Holy Cross School CBSE, Gundukalloor, Salem - 140.">
+<meta name="author" content="Dash Skndash">
+<meta property="og:title" content="Notre Dame">
+<meta property="og:description" content="Educating Heart and Mind since 2008. We are Notre Dame Of Holy Cross School CBSE, Gundukalloor, Salem - 140.">
+<meta property="og:image" content="https://ndhcs.herokuapp.com/images/banner.jpg">
+<meta property="og:url" content="https://ndhcs.herokuapp.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="images/favicon.ico">
+<link rel="stylesheet" href="out.css">
+<script src="https://kit.fontawesome.com/f3339b4404.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="loader" class="fixed z-50 w-screen h-screen transition-all bg-sky-100">
+<div class="absolute top-1/3 left-1/2 -translate-x-1/2 grid place-items-center">
+<h1 class="block relative text-[6rem] text-amber-500 font-[none]">
+<div class="w-[100vmax] h-[100vmax] rounded-full scale-0 animate-scaleup absolute top-[50%] left-[50%] bg-sky-400/50"></div>
+<img src="images/logo.png" fetchpriority="high">
+</h1>
+</div>
+</div>
+<header id="header" class="sticky top-0 z-20 flex justify-between shadow-xl bg-gradient-to-r from-sky-800 via-sky-900 to-blue-900 text-gray-50">
+<a href="/home" class="ml-2 my-1 block flex gap-2">
+<img src="images/logo.png" class="w-6 h-6">
+<h4 class="font-black font-['Canela']">
+Notre Dame
+</h4>
+</a>
+<nav id="nav" class="max-md:absolute max-md:backdrop-blur-sm max-md:transition-all max-md:max-h-0 md:open max-md:overflow-hidden max-md:left-0 max-md:right-0 max-md:bottom-0 max-md:translate-y-full max-md:bg-sky-500/75 text-gray-50">
+<ul class="ml-auto max-md:mt-4 max-md:px-4 w-fit flex flex-col gap-y-2 md:flex-row items-end font-['Canela'] max-md:text-lg">
+<li class="px-2 py-1 max-md:font-bold hover:border-b-2 border-rose-600 transition-all md:hover:bg-sky-300 md:hover:text-blue-900">
+<a href="/home"> Home </a>
+</li>
+<li class="px-2 py-1 max-md:font-bold hover:border-b-2 border-rose-600 transition-all md:hover:bg-sky-300 md:hover:text-blue-900">
+<a href="/about"> About </a>
+</li>
+<li class="px-2 py-1 max-md:font-bold hover:border-b-2 border-rose-600 transition-all md:hover:bg-sky-300 md:hover:text-blue-900">
+<a href="/events"> Events </a>
+</li>
+<li class="px-2 py-1 max-md:font-bold hover:border-b-2 border-rose-600 transition-all md:hover:bg-sky-300 md:hover:text-blue-900">
+<a href="/facility"> Student Life </a>
+</li>
+<li class="px-2 py-1 max-md:font-bold hover:border-b-2 border-rose-600 transition-all md:hover:bg-sky-300 md:hover:text-blue-900">
+<a href="/conduct"> Conduct </a>
+</li>
+<li class="px-2 py-1 max-md:font-bold hover:border-b-2 border-rose-600 transition-all md:hover:bg-sky-300 md:hover:text-blue-900">
+<a href="/details"> Details </a>
+</li>
+<li class="px-2 py-1 max-md:font-bold hover:border-b-2 border-rose-600 transition-all md:hover:bg-sky-300 md:hover:text-blue-900">
+<a onclick="toggleNav(true)" href="#footer"> Contact </a>
+</li>
+</ul>
+<h6 class="md:hidden my-4 px-2 text-right">
+Notre Dame Of Holy Cross School, <br>
+Udayapatti, Salem - 140.
+</h6>
+</nav>
+<button id="navToggle" class="md:hidden p-1">
+MENU
+</button>
+</header>
+<section class="px-4 py-12 flex flex-col justify-center items-center bg-slate-400 bg-[url('images/view.webp')] bg-cover bg-center min-h-screen">
+<div class="">
+<h1 class="text-gray-50 drop-shadow-xl text-5xl text-center">
+Educating Heart And Mind.
+</h1>
+<h2 class="mr-12 text-sky-100 text-right">Since 2008</h2>
+</div>
+<div class="mt-4 w-fit mx-auto sm:flex sm:justify-center sm:items-center">
+<div class="shrink-0 text-center">
+<span class="inline-block text-amber-600 text-[10rem] translate-x-8 -translate-y-5 font-['Canela']">N</span>
+<span class="inline-block text-amber-300 text-[10rem] -translate-x-8 translate-y-5 font-['Canela']">D</span>
+</div>
+<div class="max-w-md">
+<div class="p-4 hidden sm:block bg-neutral-800/25 text-gray-50">
+<h1 class="">
+We are not just any School, We are one of the <span class="inline-block border-b-2 border-yellow-400 border-offset-3">Best</span>.
+</h1>
+<p class=""> We provide our students our utmost persistent care for the betterment of their future. </p>
+<div class="mt-4 font-semibold">
+<span class=""> Know more about our process. </span><br>
+<a href="/details" class="py-1 px-2 bg-gray-50 text-sky-700"> Quick Facts </a>
+<a href="/facility" class="ml-2 py-1 px-2 bg-sky-700"> Student Life </a>
+</div>
+</div>
+<div class="flex gap-x-4 text-lg bg-neutral-800/25 text-gray-50">
+<hr class="block w-1 h-12 bg-sky-400">
+<div>
+<i class="mr-2 text-sky-300 fa-solid fa-phone"></i>
+<span>+91 427-2241803</span>
+<a class="text-slate-400 ml-2" href="tel:+914272241803"><i class="fa-solid fa-up-right-from-square"></i></a>
+<br>
+<i class="mr-2 text-sky-300 fa-regular fa-envelope"></i>
+<span>notredamehcs@gmail.com</span>
+<a class="text-slate-400 ml-2" href="mailto:notredamehcs@gmail.com"><i class="fa-solid fa-up-right-from-square"></i></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="px-4 py-8 bg-amber-100">
+<h2 class="text-center font-extrabold">
+News & Events <button id="reloadNews" class="ml-2 text-lg text-slate-500 hover:bg-sky-300/50"><i class="fa-solid fa-arrows-rotate"></i></button>
+</h2>
+<div class="mt-4 w-fit mx-auto">
+<div id="news" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div id="newsSpinner" class="">
+<i class="mr-2 fa-solid fa-spinner animate-spin"></i> Loading...
+</div>
+</div>
+<a href="https://m.youtube.com/@ndhcsmedia5640" class="mt-8 inline-block underline text-amber-900 text-lg">
+<i class="mr-2 fa-brands fa-youtube"></i>Checkout Youtube
+</a> <br>
+<a href="/events" class="mt-2 classic">
+<i class="fa-solid fa-angle-right mr-2"></i> More
+</a>
+</div>
+</section>
+<section class="px-4 pt-8 pb-16">
+<h1 class="text-blue-900 font-extrabold text-center"> Who We Are </h1>
+<div class="relative p-2 w-fit mx-auto max-w-xl">
+<div class="relative overflow-hidden w-full h-32">
+<!--<a href="https://www.freepik.com/free-vector/illustration-business-people-meeting_3236148.htm#query=team&position=8&from_view=search&track=sph">Image by rawpixel.com</a> on Freepik-->
+<img class="w-full h-full" src="images/team.svg" alt="Team">
+</div>
+<p class="mt-4 max-w-xl text-left">
+A <span class="font-semibold">prestigous <span class="blue-800">co-ed</span> institution</span> honing the skills and ability of our future citizens by fulfilling needs with good deeds. We aim at serving the mind and the heart to their fullest and thus <span class="font-semibold">satisfy those who seek us</span>. We are an organization with our destiny dertermined that is to carve our name at places via our students.
+</p>
+<h3 class="mt-4 font-bold">
+We Contribute to the Greater Society.
+</h3>
+<a href="/about" class="mt-4 classic">
+<i class="fa-solid fa-angle-right mr-2"></i>Learn More
+</a>
+</div>
+</section>
+<section class="">
+<div class="bg-[url('images/tree.webp')] bg-cover bg-center py-12 text-center">
+<h1 class="text-gray-50 font-black font-extrabold">
+What it's like to be a Notre Damian.
+</h1>
+</div>
+<div class="px-16 py-8 cardBox bg-slate-100">
+<div class="card">
+<div class="imgBox">
+<img class="bg-gray-50" src="images/images/academics.svg">
+</div>
+<div class="content">
+<h4 class="font-bold">
+Emphasis on Academics
+</h4>
+<p class="max-w-xl"> We concentrate on Academics than any other extra-curricular activities. The teachers tend to make each child in the room understand, like really understand the content. </p>
+</div>
+</div>
+<div class="card">
+<div class="imgBox">
+<img class="bg-gray-50" src="images/security.svg">
+</div>
+<div class="content">
+<h4 class="font-bold">
+Secure Ambiance
+</h4>
+<p class="max-w-xl"> Classrooms and vicinity are well-sheltered and secured with CCTV-cameras. Surrounding the school are agricultural fields in north and east. Transport facilities by bus are provided. </p>
+</div>
+</div>
+<div class="card">
+<div class="imgBox">
+<img class="bg-gray-50" src="images/laboratory.svg">
+</div>
+<div class="content">
+<h4 class="font-bold">
+Labs | Smart Classrooms
+</h4>
+<p class="max-w-xl"> We are well-equipped for practical teaching with Laboratories for different subjects to let students know how things are done. Smartclassrooms provide visual knowledge to the students.</p>
+</div>
+</div>
+<div class="card">
+<div class="imgBox">
+<img class="bg-gray-50" src="images/socialize.svg">
+</div>
+<div class="content">
+<h4 class="font-bold">
+Sense of Integration
+</h4>
+<p class="max-w-xl"> We try to invoke a sense of integration among the teachers, students as well as the parents/guardians. This consequently enhances communication and social skills in children. </p>
+</div>
+</div>
+</div>
+<div class="mt-4 mb-8 w-fit mx-auto">
+<a href="/facility" class="classic">
+More
+</a>
+</div>
+</section>
+<section class="bg-amber-100/50">
+<div class="gap-4 px-4 py-8">
+<h2 class="font-extrabold text-center"> Testimonials </h2>
+<h6 class="block font-thin w-fit ml-auto">
+<< swipe >>
+</h6>
+<div id="testimonials" class="relative scroll-pl-4 px-28 flex flex-row gap-4">
+<div class="min-w-[16rem] h-fit scroll-start scroll-always p-3 bg-amber-200">
+<p>Notre Dame is an excellent place for learning and development of students. They serve a creative, supportive and productive environment. Education is treated as worship here. All the faculties are extremely supportive and knowledgeable. All the subjects as well as concepts are taught thoroughly using simple and easy methods.</p>
+<span class="pt-2 block ml-auto font-amber-800 font-semibold text-right"> <i class="mr-2 fa-solid fa-user-graduate"></i> Primary Student </span>
+</div>
+<div class="min-w-[16rem] h-fit scroll-start scroll-always p-3 bg-amber-200">
+<p>During these tough times when lives are seeing complete paradigm shift, children are going through a major transition and who else to comfort them apart from the parents but their teachers. We sincerely thank the efforts by the teachers to make this unknown difficult journey easier for our kids. We are very happy to have chosen the right institution.</p>
+<span class="pt-2 block ml-auto font-amber-800 font-semibold text-right"> <i class="mr-2 fa-solid fa-user-tie"></i> Father of High Schooler </span>
+</div>
+<div class="min-w-[16rem] h-fit scroll-start scroll-always p-3 bg-amber-200">
+<p>There's real alchemy, the ingredients being the perpetual kindness, the thoughtfulness, the imagination, the fun, the skill and technique, the reassuring blend of modernity and glorious timelessness. The school serves goodwill, simple and traditional values, and joy. I know I am satisfied, but this is nothing but fantastic.</p>
+<span class="pt-2 block ml-auto font-amber-800 font-semibold text-right"> <i class="mr-2 fa-solid fa-user-tie"></i> Parent of Primary Schooler </span>
+</div>
+<div class="min-w-[16rem] h-fit scroll-start scroll-always p-3 bg-amber-200">
+<p>Notre Dame focuses on improving my son’s areas of need and really puts a huge emphasis on bolstering his individual strengths. The teachers are highly educated, thoughtful, and nurturing. They provide rigorous academic challenges, as well as the tools and strategies needed to face those challenges. I am so pleased and full to be a part of the fam.</p>
+<span class="pt-2 block ml-auto font-amber-800 font-semibold text-right"> <i class="mr-2 fa-solid fa-user-tie"></i> Parent of High Schooler </span>
+</div>
+<div class="min-w-[16rem] h-fit scroll-start scroll-always p-3 bg-amber-200">
+<p>It is a little jewel box of a school that is overflowing with love, kindness and a sense of service. My child has improved in a way that he never would have at any other school due to this excellent individualized and warm environment. Thanks for such an environment.</p>
+<span class="pt-2 block ml-auto font-amber-800 font-semibold text-right"> <i class="mr-2 fa-solid fa-user-tie"></i> Parent of Middle Schooler </span>
+</div>
+<div class="min-w-[16rem] h-fit scroll-end scroll-always p-3 bg-amber-200">
+<p>Never thought schools can be so amazing! Studying at Notre Dame has always been fun even in pandemics. We missed school days instead of holidays because teachers are so co-operative and engaging that two years are not enough to assimilate their knowledge.</p>
+<span class="pt-2 block ml-auto font-amber-800 font-semibold text-right"> <i class="mr-2 fa-solid fa-user-graduate"></i> High School Student </span>
+</div>
+</div>
+</div>
+<div class="p-4 mb-4 gap-2 flex justify-center bg-amber-100">
+<div class="relative p-2 text-center">
+<h1 class="font-black"> 2417 </h1> <br>
+<span class="font-['Canela']"> Satisfied Students </span>
+</div>
+<div class="relative p-2 text-center">
+<h1 class="font-black"> 147 </h1> <br>
+<span class="font-['Canela']"> Teaching Staffs </span>
+</div>
+<div class="relative p-2 text-center">
+<h1 class="font-black"> 117 </h1> <br>
+<span class="font-['Canela']"> Non-Teaching Staffs </span>
+</div>
+</div>
+</section>
+<section class="px-4 py-8">
+<h2 class="font-extrabold text-center">
+Management
+</h2>
+<p class="max-w-xl mx-auto mt-4 text-left">
+In 1837 <span class="font-bold text-blue-900">Fr.Basil Moreau</span>, the Founder of the Congregation of Holy Cross envisioned <span class="font-semibold">education as a weapon</span> of significance for empowering the young for a better and brighter world and to uplift the falling society of France.
+</p>
+<div class="mt-4 mx-auto w-fit flex flex-col gap-4 sm:flex-row">
+<div class="gap-4">
+<div class="relative w-full h-56">
+<img src="images/mariasuresh.jpg" class="w-full h-full">
+</div>
+<div class="text-center">
+<h4 class="font-bold"> Bro. Maria Suresh CSC. </h2>
+<h5 class="font-md text-slate-800"> Principal </h3>
+</div>
+</div>
+<div class="gap-4">
+<div class="relative w-full h-56">
+<img src="images/nelson.jpg" class="w-full h-full">
+</div>
+<div class="text-center">
+<h4 class="font-bold"> Bro. Nelson D'Souza  CSC. </h2>
+<h5 class="font-md text-slate-800"> Administrator </h3>
+</div>
+</div>
+<div class="gap-4">
+<div class="relative w-full h-56">
+<img src="images/simeos.jpg" class="w-full h-full">
+</div>
+<div class="text-center">
+<h4 class="font-bold"> Bro. Assis Simeos CSC. </h2>
+<h5 class="font-md text-slate-800"> Vice Principal </h3>
+</div>
+</div>
+</div>
+</section>
+<footer id="footer" class="sm:flex sm:flex-row-reverse bg-slate-900 text-slate-200">
+<div class="relative w-full sm:max-w-[50%] bg-slate-700">
+<iframe class="w-full h-full" src="https://maps.google.com/maps?q=notre%20dame%20Salem&t=k&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" marginheight="0" marginwidth="0"></iframe>
+</div>
+<div class="p-8 mx-auto w-fit flex flex-col gap-3 text-sm">
+<div>
+<i class="mr-2 text-sky-300 fa-solid fa-earth-asia"></i>
+<span>Notre Dame of HolyCross School [CBSE], <br>Gundukalloore, Salem - 636 140, Tamil Nadu.</span>
+</div>
+<div>
+<i class="mr-2 text-sky-300 fa-solid fa-phone"></i>
+<span class="text-slate-300">+91 427-2241800</span> <span class="text-slate-400 font-thin text-xs">Primary School</span>
+<a class="text-slate-400 ml-2" href="tel:+914272241800"><i class="fa-solid fa-up-right-from-square"></i></a>
+</div>
+<div>
+<i class="mr-2 text-sky-300 fa-solid fa-phone"></i>
+<span class="text-slate-300">+91 427-2241803</span>
+<a class="text-slate-400 ml-2" href="tel:+914272241803"><i class="fa-solid fa-up-right-from-square"></i></a>
+</div>
+<div>
+<i class="mr-2 text-sky-300 fa-regular fa-envelope"></i>
+<span>notredamehcs@gmail.com</span>
+<a class="text-slate-400 ml-2" href="mailto:notredamehcs@gmail.com"><i class="fa-solid fa-up-right-from-square"></i></a>
+</div>
+<div class="mt-4">
+<i class="text-rose-600 mr-2 text-xl fa-brands fa-youtube"></i>
+<span class="text-rose-300">Check out latest events on YouTube!</span>
+</div>
+<p class="mt-4 text-center text-xs">
+Copyright © 2022 <br> Design & Development by
+<a>Dash Skndash.</a>
+</p>
+</div>
+</footer>
+<script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src="scripts/index.js"></script>
+<script src="scripts/loadnews.js"></script>
+<script>
+window.addEventListener("load", () => {
+const firebaseappConfig = {
+apiKey: "AIzaSyB9S-lwz4yOHcajjQmFD8Qj9AynV-wZ0A0",
+authDomain: "ndhcs-361bf.firebaseapp.com",
+projectId: "ndhcs-361bf",
+storageBucket: "ndhcs-361bf.appspot.com",
+messagingSenderId: "644967053944",
+appId: "1:644967053944:web:ff6463c5e53ed7c0c5cb8d",
+measurementId: "G-4QGDHBZP09"
+}
+const app = firebase.initializeApp(firebaseappConfig)
+const analytics = firebase.analytics(app)
+const db = firebase.firestore(app)
+const newsSpinner = document.getElementById("newsSpinner")
+document.getElementById("reloadNews")
+.addEventListener("click", e => {
+e.target.disabled = true
+newsSpinner.classList.remove("hidden")
+loadNews(db, true, true)
+e.target.remove()
+})
+loadNews(db, false)
+})
+</script>
+</body>
+</html>

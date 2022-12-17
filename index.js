@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000
 const Router = require("./routes/router.js")
 
 app.set("view engine", "ejs")
-app.use(express.static(path.join(__dirname, "public/")))
+app.use(express.static(path.join(__dirname, "dist/")))
 app.use("/", Router)
 
 app.listen(PORT, () => {
