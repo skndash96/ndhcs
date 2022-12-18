@@ -21,6 +21,7 @@
       <span class="text-sm text-slate-800">Choose an Option to edit:</span>
       <select id="page-select" class="mt-2" disabled>
         <option value="none" selected> None </option>
+        <option value="admission"> Admissions </option>
         <option value="news"> News </option>
         <option value="events"> Events </option>
       </select>
@@ -93,7 +94,7 @@
       function loadPage(name) {
         const wrapper = document.getElementById("wrapper")
         
-        if (!["news", "events"].includes(name)) {
+        if (!["admission", "news", "events"].includes(name)) {
           wrapper.replaceChildren()
           spinner.classList.add("hidden")
           return
@@ -102,6 +103,54 @@
         const Name = name.charAt(0).toUpperCase() + name.substring(1)
         spinner.classList.remove("hidden")
 
+        if (name === "admission") {
+          db.collection("misc").doc(name).get()
+          .then(doc => {
+            let { ongoing } = doc.data() || {}
+            
+            let el = document.createElement("form")
+            el.className = "mt-2 p-4 w-fit mx-auto max-w-2xl flex flex-col justify-center items-center gap-4 text-gray-50 bg-slate-600"
+        
+            el.innerHTML = `
+            <h2> ${Name} </h2>
+            <label class="mt-2"> Set Ongoing Status: </label>
+            <select class="text-neutral-900" name="ongoing" required>
+              <option value="true" ${ongoing ? "selected" : ""}>True (Admissions Ongoing)</option>
+              <option value="false" ${!ongoing ? "selected" : ""}>False</option>
+            </select>
+            <button class="px-2 py-1 bg-slate-800" type="submit">Change</button>
+            <p class="-mt-2"></p>
+            `
+
+            el.addEventListener("submit", e => {
+              e.preventDefault()
+              let statusEl = e.target.lastElementChild
+              
+              let newData = new FormData(e.target)
+              let newOngoing = newData.get("ongoing")
+              if (newOngoing === ongoing) return statusEl.innerHTML = ""
+              else ongoing = newOngoing
+              
+              statusEl.innerHTML = "Loading"
+              
+              db.collection("misc").doc(name).update({ ongoing: newOngoing })
+              .then(() => statusEl.innerHTML = "Done.")
+              .catch(e => {
+                console.error(e)
+                statusEl.innerHTML = "Couldn't update. Try again."
+              })
+            })
+
+            wrapper.replaceChildren(el)
+          })
+          .catch(e => {
+            console.error(e)
+            wrapper.append("Failed to load data, try refreshing or come back later.")
+          })
+          .then(() => spinner.classList.add("hidden"))
+          return
+        }
+        
         const addElBtn = document.createElement("button")
         const rmChkdBtn = document.createElement("button")
         const chkBoxEl = document.createElement("p")

@@ -4,7 +4,7 @@ function loadNews(db, storage, showMany = true, force = false) {
   
   const expTime = 24*60*60*1000
 
-  const news = localStorage["news"] && JSON.parse(localStorage["news"])
+  const news = JSON.parse(localStorage["news"] || null)
   if (!force && news && news[0] > Date.now()) {
     writeNews(news.slice(1))
     spinner.classList.add("hidden")

@@ -4,7 +4,7 @@ function loadEvents(db, storage) {
   
   const expTime = 24*60*60*1000
 
-  const events = localStorage["events"] && JSON.parse(localStorage["events"])
+  const events = JSON.parse(localStorage["events"] || null)
   if (events && events[0] > Date.now()) {
     writeEvs(events.slice(1))
   }

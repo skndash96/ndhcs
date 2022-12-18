@@ -90,14 +90,17 @@ We are not just any School, We are one of the <span class="inline-block border-b
 <a href="/facility" class="ml-2 py-1 px-2 bg-sky-700"> Student Life </a>
 </div>
 </div>
-<div class="flex gap-x-4 text-lg bg-neutral-800/25 text-gray-50">
-<hr class="block w-1 h-12 bg-sky-400">
-<div>
-<i class="mr-2 text-sky-300 fa-solid fa-phone"></i>
+<div id="admission" class="mt-2 px-2 pt-1 pb-4 bg-blue-400 font-bold text-neutral-900">
+<span class="pb-2 text-2xl text-neutral-900 bg-[url('images/star.svg')] bg-repeat-x bg-left-bottom bg-[length:10px_10px]">Admissions Open</span>
+</div>
+<div class="flex text-lg bg-blue-500">
+<div class="w-2 h-16 bg-blue-400 shadow-lg"></div>
+<div class="px-4 py-1 bg-neutral-900/50 text-blue-200">
+<i class="mr-2 text-gray-50 fa-solid fa-phone"></i>
 <span>+91 427-2241803</span>
 <a class="text-slate-400 ml-2" href="tel:+914272241803"><i class="fa-solid fa-up-right-from-square"></i></a>
 <br>
-<i class="mr-2 text-sky-300 fa-regular fa-envelope"></i>
+<i class="mr-2 text-gray-50 fa-regular fa-envelope"></i>
 <span>notredamehcs@gmail.com</span>
 <a class="text-slate-400 ml-2" href="mailto:notredamehcs@gmail.com"><i class="fa-solid fa-up-right-from-square"></i></a>
 </div>
@@ -309,12 +312,14 @@ In 1837 <span class="font-bold text-blue-900">Fr.Basil Moreau</span>, the Founde
 <a class="text-slate-400 ml-2" href="mailto:notredamehcs@gmail.com"><i class="fa-solid fa-up-right-from-square"></i></a>
 </div>
 <div class="mt-4">
+<a href="https://m.youtube.com/@ndhcsmedia5640">
 <i class="text-rose-600 mr-2 text-xl fa-brands fa-youtube"></i>
 <span class="text-rose-300">Check out latest events on YouTube!</span>
+</a>
 </div>
 <p class="mt-4 text-center text-xs">
 Copyright © 2022 <br> Design & Development by
-<a>Dash Skndash.</a>
+<a href="https://skndash.tk/" crossorigin>Dash Skndash.</a>
 </p>
 </div>
 </footer>
@@ -337,6 +342,21 @@ measurementId: "G-4QGDHBZP09"
 const app = firebase.initializeApp(firebaseappConfig)
 const analytics = firebase.analytics(app)
 const db = firebase.firestore(app)
+const admsnEl = document.getElementById("admission")
+const admsnData = JSON.parse(localStorage["admission"] || null)
+const expTime = 24*60*60*1000
+if (admsnData?.expiry > Date.now()) {
+if (!admsnData.ongoing) admsnEl.classList.add("hidden")
+} else db.collection("misc").doc("admission").get()
+.then(doc => {
+const data = doc.data()
+localStorage["admission"] = JSON.stringify({expiry: Date.now()+expTime,...data})
+if (!data?.ongoing) admsnEl.classList.add("hidden")
+})
+.catch(e => {
+console.error(e)
+admsnEl.classList.add("hidden")
+})
 const newsSpinner = document.getElementById("newsSpinner")
 document.getElementById("reloadNews")
 .addEventListener("click", e => {
