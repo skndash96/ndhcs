@@ -5,7 +5,7 @@ module.exports = {
   content: [
     "./views/*.ejs",
     "./views/partials/*.ejs",
-    "./dist/public/**/*.js"
+    "./dist/**/*.js"
   ],
   mode: 'jit',
   theme: {
