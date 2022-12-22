@@ -245,7 +245,7 @@ thisEl.replaceChildren(`Could not fetch ${name}. Try refreshing.`)
 }
 addElBtn.addEventListener("click", e => {
 const el = document.createElement("form")
-el.className = "p-4 relative grid transition-transform origin-top-right bg-slate-700"
+el.className = "p-4 relative grid sm:col-span-2 transition-transform origin-top-right bg-slate-700"
 el.addEventListener("submit", name === "news" ? addNews : addEvent)
 el.innerHTML = `
 <button onclick="rmAddEl(event)" class="absolute top-2 right-4 text-rose-200" type="button"> x </button>

@@ -48,7 +48,7 @@ function loadEvents(db, storage) {
           let imgBox = document.createElement("div")
           imgBox.className = `${i===1 ? "row-span-2" : ""} ${i===3 ? "col-span-2" : ""} min-h-[10rem] bg-slate-700`
           imgBox.innerHTML = `<img src="${url}" loading="lazy" class="w-full h-full">`
-          els.push(imgBox)
+          imgs.push(imgBox)
         }
         el.append(...imgs)
       } catch (e) {
