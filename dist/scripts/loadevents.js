@@ -28,39 +28,40 @@ function loadEvents(db, storage) {
     }
     
     Promise.all(docs.map(async ({title,date,dir}) => {
-      date = new Date(date.seconds*1000)
-      
-      let el = document.createElement("div")
-      el.className = "mt-8 grid grid-cols-2 md:grid-cols-3 gap-4"
-      el.innerHTML = `
-      <div class="col-span-2 md:col-span-3">
-        <hr class="h-1 w-full mx-auto max-w-xs bg-sky-500">
-        <h3 class="mt-4 font-semibold text-center">
-          ${title} <br> ${("0"+date.getDate().toString()).slice(-2)}/${date.getMonth()+1}/${date.getFullYear()}
-        </h3>
-      </div>`
-      
       try {
-        let els = []
+        date = new Date(date.seconds*1000)
+        
+        var el = document.createElement("div")
+        el.className = "mt-8 grid grid-cols-2 md:grid-cols-3 gap-4"
+        el.innerHTML = `
+        <div class="col-span-2 md:col-span-3">
+          <hr class="h-1 w-full mx-auto max-w-xs bg-sky-500">
+          <h3 class="mt-4 font-semibold text-center">
+            ${title} <br> ${("0"+date.getDate().toString()).slice(-2)}/${date.getMonth()+1}/${date.getFullYear()}
+          </h3>
+        </div>`
+        
+        let imgs = []
         let results = await storage.ref().child(dir).list()
         for (let i = 0; i < results.items.length; i++) {
           let url = await results.items[i].getDownloadURL()
-          let el = document.createElement("div")
-          el.className = `${i===1 ? "row-span-2" : ""} ${i===3 ? "col-span-2" : ""} min-h-[10rem] bg-slate-700`
-          el.innerHTML = `<img src="${url}" loading="lazy" class="w-full h-full">`
-          els.push(el)
+          let imgBox = document.createElement("div")
+          imgBox.className = `${i===1 ? "row-span-2" : ""} ${i===3 ? "col-span-2" : ""} min-h-[10rem] bg-slate-700`
+          imgBox.innerHTML = `<img src="${url}" loading="lazy" class="w-full h-full">`
+          els.push(imgBox)
         }
-        el.append(...els)
+        el.append(...imgs)
       } catch (e) {
         console.error(e)
-        el.append("Can't Load image.")
       } finally {
         return el
       }
     }))
     .then(evs => {
+      if (!evs.length) evs.push("Events could not be loaded. Try again later.")
       eventsEl.append(...evs)
       spinner.classList.add("hidden")
     })
+    
   }
 }
