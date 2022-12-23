@@ -47,11 +47,10 @@
   #nav.open {
     max-height: 80vh !important;
   }
-  #testimonials {
-    @apply overflow-x-scroll snap-mandatory snap-x;
-    scroll-snap-padding: 60%;
+  .testimonials {
+    @apply relative px-28 flex gap-4 overflow-y-hidden overflow-x-scroll snap-mandatory snap-x scroll-px-16;
   }
-  #testimonials * {
+  .testimonials * {
     @apply snap-always snap-start;
   }
   .carouselx::-webkit-scrollbar {
