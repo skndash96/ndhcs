@@ -1,4 +1,4 @@
-function loadNews(db, storage, showMany = true, force = false) {
+function loadNews(db, showMany = true, force = false) {
   const newsEl = document.getElementById("news")
   const spinner = newsEl.firstElementChild
   
@@ -38,7 +38,7 @@ function loadNews(db, storage, showMany = true, force = false) {
       let el = document.createElement("a")
       el.href = "/pdf?url="+encodeURIComponent(url)
       el.target = "_blank"
-      el.className = `${(showMany ? i > 9 : i > 3) ? "max-md:hidden " : ""}block relative flex gap-4 items-center shadow-sm bg-gray-50 hover:shadow-md hover:bg-slate-300`
+      el.className = `${(showMany ? i > 9 : i > 5) ? "max-md:hidden " : ""}block relative flex gap-4 items-center shadow-sm bg-gray-50 hover:shadow-md hover:bg-slate-300`
       el.innerHTML = `
         <div class="inline-block p-2 text-center bg-blue-400 text-gray-50">
           <h2 class="font-['Courier'] font-black">

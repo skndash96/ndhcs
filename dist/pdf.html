@@ -106,33 +106,34 @@ Copyright © 2022 <br> Design & Development by
 </footer>
 <script src="scripts/index.js"></script>
 <script>
-let params = window.location.href.split("?").length > 1 && Object.fromEntries(window.location.href.split("?")[1].split("&").map(x => [x.split("=")[0], decodeURIComponent(x.split("=")[1])]))
+const params = window.location.href.split("?").length > 1 && Object.fromEntries(window.location.href.split("?")[1].split("&").map(x => [x.split("=")[0], decodeURIComponent(x.split("=")[1])]))
+const main = document.getElementById("main")
 if (params.url) {
 const dl = document.createElement("a")
 dl.href = params.url
-dl.className = "mb-8 text-underline text-sky-600"
+dl.className = "mb-8 block text-underline text-sky-600"
 dl.innerHTML = "<i class=\"mr-2 fa-solid fa-arrow-down\"></i>Direct Download Link"
-document.getElementById("main").prepend(dl)
+main.prepend(dl)
 } else {
-document.getElementById("main").replaceChildren("PDF file not found, come back later.")
+main.replaceChildren("PDF file not found, come back later.")
 }
 params.url && window.addEventListener("load", () => {
 const el = document.createElement("iframe")
 el.id = "preview"
-el.type="application/pdf"
+el.type = "application/pdf"
 el.src = "https://docs.google.com/gview?embedded=true&url="+params.url
-el.className = "w-[80vw] max-w-4xl h-[70vh] bg-slate-300"
+el.className = "w-[80vw] mx-auto max-w-4xl h-[70vh] bg-slate-300"
 el.textContent = "Preview could not be loaded. Try refreshing the browser a couple times."
-document.getElementById("main").append(el)
-el.onload = () => {
-document.getElementById("spinner").remove()
-if (document.getElementById("preview").contentDocument) {
+main.append(el)
+setTimeout(() => document.getElementById("spinner").remove(), 5*1000)
+const tm = setTimeout(() => {
 const el = document.createElement("span")
-el.textContent = "If preview is not available, try refreshing the browser."
-el.className = "text-xs text-slate-500"
-document.getElementById("main").append(el)
-}
-}
+el.id = "slowiframe"
+el.className = "w-[80vw] text-xs text-slate-500"
+el.innerHTML = "If preview is not available, " + (document.getElementById("preview").contentDocument?.body.children.length === 0 ? "try refreshing the browser a couple times" : "wait if your network is slow by any chance") + " or download the file right away from the link above ;-;"
+main.insertBefore(el, main.lastElementChild)
+}, 5*1000)
+el.onload = () => (clearTimeout(tm), document.getElementById("slowiframe")?.remove())
 })
 </script>
 </body>
