@@ -2,7 +2,7 @@ function loadNews(db, storage, showMany = true, force = false) {
   const newsEl = document.getElementById("news")
   const spinner = newsEl.firstElementChild
   
-  const expTime = 24*60*60*1000
+  const expTime = 1*60*60*1000
 
   const news = JSON.parse(localStorage["news"] || null)
   if (!force && news && news[0] > Date.now()) {
@@ -35,8 +35,10 @@ function loadNews(db, storage, showMany = true, force = false) {
     newsEl.append(...docs.map(({title,date,url}, i) => {
       date = new Date(date.seconds*1000)
       
-      let el = document.createElement("div")
-      el.className = `${(showMany ? i > 9 : i > 3) ? "max-md:hidden " : ""}relative flex gap-4 items-center shadow-sm bg-gray-50 hover:shadow-md hover:bg-slate-300`
+      let el = document.createElement("a")
+      el.href = "/pdf?url="+encodeURIComponent(url)
+      el.target = "_blank"
+      el.className = `${(showMany ? i > 9 : i > 3) ? "max-md:hidden " : ""}block relative flex gap-4 items-center shadow-sm bg-gray-50 hover:shadow-md hover:bg-slate-300`
       el.innerHTML = `
         <div class="inline-block p-2 text-center bg-blue-400 text-gray-50">
           <h2 class="font-['Courier'] font-black">

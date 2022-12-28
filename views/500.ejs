@@ -21,7 +21,7 @@
 
     <div class="relative w-fit group">
       <i class="fa-solid fa-circle-info"></i>
-      <div id="message" class="z-10 p-2 hidden group-hover:block absolute -top-2 -translate-y-full -right-2 bg-slate-800 text-gray-50"></div>
+      <div id="message" class="z-10 p-2 absolute -top-2 -right-2 translate-x-full hidden group-hover:block bg-slate-800 text-gray-50"></div>
     </div>
     <p class="mt-4">Something went wrong! The mistake is probably on our side and it'll be fixed it. Try again after sometime.</p>
     <p class="mt-4">Why don't you go to the homepage and look for something better? Seems like a good idea.</p>
@@ -35,19 +35,10 @@
   <script src="scripts/index.js"></script>
   <script>
     window.addEventListener("load", () => {
-      const errorMessage = document.getElementById("message")
+      const emsg = document.getElementById("message")
       
-      const queryString = {}
-      if (window.location.href.split('?').length > 1) {
-        const params = window.location.search.split('?')[1].split('&');
-        for (let i = 0; i < params.length; i++) {
-          let [key, value] = params[i].split('=');
-          queryString[key] = decodeURIComponent(value);
-        }
-      }
-      if (queryString["m"] != null) {
-        errorMessage.innerHTML = queryString["m"]
-      }
+      const params = window.location.href.split("?").length > 1 && Object.fromEntries(window.location.href.split("?")[1].split("&").map(x => [x.split("=")[0], decodeURIComponent(x.split("=")[1])]))
+      if (params?.m) emsg.textContent = params.m
     })
   </script>
 </body>

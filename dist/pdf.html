@@ -65,20 +65,8 @@ Udayapatti, Salem - 140.
 MENU
 </button>
 </header>
-<main class="px-4 py-8 mx-auto w-fit max-w-2xl">
-<i class="block mx-auto text-amber-500 text-7xl fa-solid fa-cloud-exclamation"></i>
-<h2 class="mt-4 font-bold text-center">
-500 - Server Error
-</h2><br>
-<div class="relative w-fit group">
-<i class="fa-solid fa-circle-info"></i>
-<div id="message" class="z-10 p-2 absolute -top-2 -right-2 translate-x-full hidden group-hover:block bg-slate-800 text-gray-50"></div>
-</div>
-<p class="mt-4">Something went wrong! The mistake is probably on our side and it'll be fixed it. Try again after sometime.</p>
-<p class="mt-4">Why don't you go to the homepage and look for something better? Seems like a good idea.</p>
-<a href="/" class="mt-4 classic">
-<i class="mr-2 fa-solid fa-angle-right"></i> Home Page
-</a>
+<main id="main" class="px-4 py-8 mx-auto w-fit max-w-2xl">
+<div id="spinner"><i class="mr-2 fa-solid fa-spinner animate-spin"></i>Loading...</div>
 </main>
 <footer id="footer" class="sm:flex sm:flex-row-reverse bg-slate-900 text-slate-200">
 <div class="relative w-full sm:max-w-[50%] bg-slate-700">
@@ -118,11 +106,28 @@ Copyright © 2022 <br> Design & Development by
 </footer>
 <script src="scripts/index.js"></script>
 <script>
+let params = window.location.href.split("?").length > 1 && Object.fromEntries(window.location.href.split("?")[1].split("&").map(x => [x.split("=")[0], decodeURIComponent(x.split("=")[1])]))
+if (!params.url) document.getElementById("main").replaceChildren("PDF file not found, come back later.")
+else {
+const dl = document.createElement("a")
+dl.href = params.url
+dl.className = "text-underline text-sky-600"
+dl.innerHTML = "<i class=\"mr-2 fa-solid fa-arrow-down\"></i>Direct Download Link <br>"
+const el = document.createElement("iframe")
+el.type="application/pdf"
+el.src = "https://docs.google.com/gview?embedded=true&url="+params.url
+el.className = "w-[80vw] max-w-4xl h-[70vh] bg-slate-300"
+el.textContent = "Preview could not be loaded. Try refreshing the browser."
+document.getElementById("main").replaceChildren(dl, el)
 window.addEventListener("load", () => {
-const emsg = document.getElementById("message")
-const params = window.location.href.split("?").length > 1 && Object.fromEntries(window.location.href.split("?")[1].split("&").map(x => [x.split("=")[0], decodeURIComponent(x.split("=")[1])]))
-if (params?.m) emsg.textContent = params.m
+if (document.querySelector("iframe").contentDocument) {
+const el = document.createElement("span")
+el.textContent = "If preview is not available, try refreshing the browser."
+el.className = "text-xs text-slate-500"
+document.getElementById("main").append(el)
+}
 })
+}
 </script>
 </body>
 </html>
