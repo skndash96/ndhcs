@@ -35,39 +35,39 @@
   </main>
 
   <%- include("partials/footer"); %>
-  
-  <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-  <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
-  <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-  <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
-  
   <script src="scripts/index.js"></script>
-  <script>
-    window.addEventListener("load", () => {
-      const firebaseappConfig = {
-        apiKey: "AIzaSyB9S-lwz4yOHcajjQmFD8Qj9AynV-wZ0A0",
-        authDomain: "ndhcs-361bf.firebaseapp.com",
-        projectId: "ndhcs-361bf",
-        storageBucket: "ndhcs-361bf.appspot.com",
-        messagingSenderId: "644967053944",
-        appId: "1:644967053944:web:ff6463c5e53ed7c0c5cb8d",
-        measurementId: "G-4QGDHBZP09"
-      };
-      
-      const app = firebase.initializeApp(firebaseappConfig);
-      const analytics = firebase.analytics(app);
-      const db = firebase.firestore(app)
-      const storage = firebase.storage(app).ref()
-      const auth = firebase.auth(app)
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
+    import { getStorage, uploadBytes, list, ref } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js"
+    import { getAuth, onAuthStateChanged, getIdTokenResult } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"
+    import { getFirestore, writeBatch,
+            doc, addDoc, updateDoc, getDoc, getDocs,
+            collection, query, limit, orderBy
+           } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js"
 
-      auth.onAuthStateChanged(async user => {
+    const firebaseappConfig = {
+      apiKey: "AIzaSyB9S-lwz4yOHcajjQmFD8Qj9AynV-wZ0A0",
+      authDomain: "ndhcs-361bf.firebaseapp.com",
+      projectId: "ndhcs-361bf",
+      storageBucket: "ndhcs-361bf.appspot.com",
+      messagingSenderId: "644967053944",
+      appId: "1:644967053944:web:ff6463c5e53ed7c0c5cb8d",
+      measurementId: "G-4QGDHBZP09"
+    }
+
+    const app = initializeApp(firebaseappConfig)
+    const db = getFirestore(app)
+    const storage = getStorage(app)
+    const auth = getAuth(app)
+ 
+    window.addEventListener("load", () => {
+      onAuthStateChanged(auth, async user => {
         if (!user) return window.location = "/auth?m=Session%20Expired"
 
-        user.getIdTokenResult()
+        getIdTokenResult(user)
         .then(token => {
           let gap = Date.now()- (new Date(token.authTime)).getTime()
-          if (gap > 30 * 60 * 1000) auth.signOut()
+          if (gap > 30 * 60 * 1000) signOut(auth)
             .then(() => {
               window.location = "/auth"
             })
@@ -104,7 +104,7 @@
         spinner.classList.remove("hidden")
 
         if (name === "admission") {
-          db.collection("misc").doc(name).get()
+          getDoc(doc(db, "misc/"+name))
           .then(doc => {
             let { ongoing } = doc.data() || {}
             
@@ -133,7 +133,7 @@
               
               statusEl.innerHTML = "Loading"
               
-              db.collection("misc").doc(name).update({ ongoing: newOngoing })
+              updateDoc(doc.ref, { ongoing: (newOngoing === "true" ? true : false) })
               .then(() => statusEl.innerHTML = "Done.")
               .catch(e => {
                 console.error(e)
@@ -174,7 +174,7 @@
         function addChildren() {
           spinner.classList.remove("hidden")
           
-          db.collection(name).orderBy("date", "desc").limit(name === "news" ? 25 : 10).get()
+          getDocs(query(collection(db, name), orderBy("date", "desc"), limit(name === "news" ? 25 : 10)))
           .then(docs => {
             let els = []
             let i = 0
@@ -215,12 +215,12 @@
         
         rmChkdBtn.addEventListener("click", e => {
           const delDocs = Array.from(document.getElementById(name).querySelectorAll("div input:checked")).map(node => node.parentElement.id)
-          const batch = db.batch()
+          const batch = writeBatch(db)
           
           if (!delDocs.length) alert(`No ${Name} Selected for removal.`)
           else if (window.confirm(`Delete ${delDocs.length} Old ${Name}?`)) {
             delDocs.forEach(id => {
-              batch.delete(db.collection(name).doc(id))
+              batch.delete(doc(db, name+"/"+id))
             })
             batch.commit()
             .then(addChildren)
@@ -270,31 +270,28 @@
               
               let dir = title.toLowerCase().replace(/\s+/g, "_")
               files.forEach(
-                (f,i) => storage.child(`${dir}/${i}.${f.name.split(".").slice(-1)[0]}`).put(f)
-                    .then(() => setStatus())
+                (f,i) => uploadBytes(ref(storage, `${dir}/${i}.${f.name.split(".").slice(-1)[0]}`), f)
+                    .then(() => setEvStat())
                     .catch(e => {
                       console.error(e)
                       status.innerHTML += `<br>${f.name} upload failed`
-                      setStatus(true)
+                      setEvStat(true)
                     })
               )
 
-              function setStatus(e) {
-                completed += 1
-                failed += e ? 1 : 0
-                status.innerHTML = completed + status.innerHTML.slice(1)
+              function setEvStat(e) {
+                completed++
+                e && failed++
+                status.innerHTML = "Upload Completed"
 
                 if (completed !== files.length) return
-                else if (failed) {
-                  status.innerHTML += `<br>${files.length-completed} uploads failed. Try again.`
-                } else {
-                  db.collection("events").add({ title, date, dir, imgCount: completed })
+                else if (failed) status.innerHTML += `<br>${files.length-completed} uploads failed. Refresh the page and try uploading all of them again.`
+                else addDoc(collection(db, "events"), { title, date, dir, imgCount: completed })
                   .then(addChildren)
                   .catch(e => {
                     console.error(e)
                     status.innerHTML = e.message
                   })
-                }
               }
             }
           }
@@ -318,7 +315,7 @@
           } else if (data.date.getTime() > Date.now()) {
             status.innerHTML = "Invalid Date"
           } else {
-            db.collection("news").add(data)
+            addDoc(collection(db, "news"), data)
             .then(addChildren)
             .catch(e => {
               console.error(e)

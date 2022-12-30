@@ -1,4 +1,6 @@
-function loadEvents(db, storage) {
+import { db, getDocs, query, limit, orderBy, collection, storage, ref, list, getDownloadURL } from "./firebase.js"
+
+export default function loadEvents() {
   const eventsEl = document.getElementById("events")
   const spinner = eventsEl.firstElementChild
   
@@ -9,7 +11,7 @@ function loadEvents(db, storage) {
     writeEvs(events.slice(1))
   }
   else {
-    db.collection("events").orderBy("date", "desc").limit(10).get()
+    getDocs(query(collection(db, "events"), orderBy("date", "desc"), limit(10)))
     .then(docs => {
       const events = [Date.now() + expTime]
       docs.forEach(doc => events.push(doc.data()))
@@ -42,9 +44,9 @@ function loadEvents(db, storage) {
         </div>`
         
         let imgs = []
-        let results = await storage.ref().child(dir).list()
+        let results = await list(ref(storage, dir))
         for (let i = 0; i < results.items.length; i++) {
-          let url = await results.items[i].getDownloadURL()
+          let url = await getDownloadURL(results.items[i])
           let imgBox = document.createElement("div")
           imgBox.className = `${i===1 ? "row-span-2" : ""} ${i===3 ? "col-span-2" : ""} min-h-[10rem] bg-slate-700`
           imgBox.innerHTML = `<img src="${url}" loading="lazy" class="w-full h-full">`

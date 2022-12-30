@@ -44,9 +44,9 @@
         <div id="admission" class="mt-2 px-2 pt-1 pb-4 bg-blue-400 font-bold text-neutral-900">
           <span class="pb-2 text-2xl text-neutral-900 bg-[url('images/star.svg')] bg-repeat-x bg-left-bottom bg-[length:10px_10px]">Admissions Open</span>
         </div>
-        <div class="flex text-lg bg-blue-500">
+        <div class="flex text-lg">
           <div class="w-2 h-16 bg-blue-400 shadow-lg"></div>
-          <div class="px-4 py-1 bg-neutral-900/50 text-blue-200">
+          <div class="px-4 py-1 bg-blue-500/75 text-blue-100">
             <i class="mr-2 text-gray-50 fa-solid fa-phone"></i>
             <span>+91 427-2241803</span>
             <a class="text-slate-400 ml-2" href="tel:+914272241803"><i class="fa-solid fa-up-right-from-square"></i></a>
@@ -265,35 +265,19 @@
   </section>
 
   <%- include("partials/footer"); %>
-  <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
-  <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-  
   <script src="scripts/index.js"></script>
-  <script src="scripts/loadnews.js"></script>
-  <script>
-    window.addEventListener("load", () => {
-      const firebaseappConfig = {
-        apiKey: "AIzaSyB9S-lwz4yOHcajjQmFD8Qj9AynV-wZ0A0",
-        authDomain: "ndhcs-361bf.firebaseapp.com",
-        projectId: "ndhcs-361bf",
-        storageBucket: "ndhcs-361bf.appspot.com",
-        messagingSenderId: "644967053944",
-        appId: "1:644967053944:web:ff6463c5e53ed7c0c5cb8d",
-        measurementId: "G-4QGDHBZP09"
-      }
-    
-      const app = firebase.initializeApp(firebaseappConfig)
-      const analytics = firebase.analytics(app)
-      const db = firebase.firestore(app)
+  <script type="module">
+    import { db, getDoc, doc } from "./scripts/firebase.js"
+    import loadNews from "./scripts/loadnews.js"
 
+    window.addEventListener("load", () => {
       const admsnEl = document.getElementById("admission")
       const admsnData = JSON.parse(localStorage["admission"] || null)
       const expTime = 24*60*60*1000
-      
+
       if (admsnData?.expiry > Date.now()) {
-        if (!admsnData.ongoing) admsnEl.classList.add("hidden")
-      } else db.collection("misc").doc("admission").get()
+        if (!admsnData.ongoing) admsnEl.remove()
+      } else getDoc(doc(db, "misc/admission"))
       .then(doc => {
         const data = doc.data()
         localStorage["admission"] = JSON.stringify({expiry: Date.now()+expTime,...data})
@@ -309,11 +293,10 @@
         .addEventListener("click", e => {
           e.target.disabled = true
           newsSpinner.classList.remove("hidden")
-          loadNews(db, true, true)
-          e.target.remove()
+          loadNews(true, true)
         })
       
-      loadNews(db, false)
+      loadNews(false, false)
     })
   </script>
 </body>

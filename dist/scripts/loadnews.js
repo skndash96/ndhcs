@@ -1,16 +1,19 @@
-function loadNews(db, showMany = true, force = false) {
+import { db, collection, getDocs, query, limit, orderBy } from "./firebase.js"
+
+export default function loadNews(showMany = true, force = false) {
   const newsEl = document.getElementById("news")
   const spinner = newsEl.firstElementChild
   
   const expTime = 1*60*60*1000
 
   const news = JSON.parse(localStorage["news"] || null)
+  
   if (!force && news && news[0] > Date.now()) {
     writeNews(news.slice(1))
     spinner.classList.add("hidden")
   }
-  else if ((force && news) ? (news[0]-Date.now() < expTime-5*60*1000) : true) {
-    db.collection("news").orderBy("date", "desc").limit(showMany ? 20 : 10).get()
+  else {
+    getDocs(query(collection(db, "news"), orderBy("date", "desc"), limit(showMany ? 20 : 10)))
     .then(docs => {
       const news = [Date.now() + expTime]
       docs.forEach(doc => news.push(doc.data()))
@@ -22,9 +25,6 @@ function loadNews(db, showMany = true, force = false) {
       console.error(e)
       spinner.innerHTML = "Try again later"
     })
-  }
-  else {
-    setTimeout(() => spinner.classList.add("hidden"), 500)
   }
 
   function writeNews(docs) {
