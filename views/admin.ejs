@@ -39,7 +39,7 @@
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
     import { getStorage, uploadBytes, list, ref } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js"
-    import { getAuth, onAuthStateChanged, getIdTokenResult } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"
+    import { getAuth, onAuthStateChanged, getIdTokenResult, signOut } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"
     import { getFirestore, writeBatch,
             doc, addDoc, updateDoc, getDoc, getDocs,
             collection, query, limit, orderBy
