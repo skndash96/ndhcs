@@ -49,7 +49,7 @@ export default function loadEvents() {
           let url = await getDownloadURL(results.items[i])
           let imgBox = document.createElement("div")
           imgBox.className = `${i===1 ? "row-span-2" : ""} ${i===3 ? "col-span-2" : ""} min-h-[10rem] bg-slate-700`
-          imgBox.innerHTML = `<img src="${url}" loading="lazy" class="w-full h-full">`
+          imgBox.innerHTML = `<img alt="${title} ${i+1}" src="${url}" loading="lazy" class="w-full h-full">`
           imgs.push(imgBox)
         }
         el.append(...imgs)
