@@ -5,6 +5,14 @@ window.addEventListener("load", () => {
   
   document.getElementById("navToggle")
     .addEventListener("click", () => toggleNav())
+
+  const mapEl = document.createElement("iframe")
+  mapEl.className = "w-full h-full"
+  mapEl.src = "https://maps.google.com/maps?q=notre%20dame%20Salem&t=k&z=13&ie=UTF8&iwloc=&output=embed"
+  mapEl.frameborder = "0"
+  mapEl.marginheight = "0"
+  mapEl.marginwidth = "0"
+  document.getElementById("mapEmbed").replaceChildren(mapEl)
 })
 
 function toggleNav(close) {

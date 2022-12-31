@@ -87,16 +87,19 @@
 
 @font-face {
   font-family: "Canela";
-  src: url("fonts/Canela.otf")
+  src: url("fonts/Canela.otf");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Courier";
-  src: url("fonts/CourierPrime.ttf")
+  src: url("fonts/CourierPrime.ttf");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Cabin";
   src: url("fonts/CabinRegular.ttf");
   size-adjust: 110%;
+  font-display: swap;
 }
