@@ -9,6 +9,7 @@ window.addEventListener("load", () => {
   const mapEl = document.createElement("iframe")
   mapEl.className = "w-full h-full"
   mapEl.src = "https://maps.google.com/maps?q=notre%20dame%20Salem&t=k&z=13&ie=UTF8&iwloc=&output=embed"
+  mapEl.loading = "lazy"
   mapEl.frameborder = "0"
   mapEl.marginheight = "0"
   mapEl.marginwidth = "0"
@@ -24,6 +25,6 @@ function toggleNav(close) {
     navToggle.innerHTML = "MENU"
   } else if (!close) {
     nav.classList.add("open")
-    navToggle.innerHTML = "<span class=\"block mr-2 text-xl rotate-45 animate-[spin_150ms_ease-out_3]\">+</span>"
+    navToggle.innerHTML = "<span class=\"block mr-2 text-xl rotate-45 animate-[scaleSpin_200ms_ease-in_1]\">+</span>"
   }
 }

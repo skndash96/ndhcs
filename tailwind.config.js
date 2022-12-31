@@ -22,6 +22,11 @@ module.exports = {
         scale: {
           "0%": { transform: "translate(-50%, -50%) scale(0)", opacity: "1" },
           "100%": { transform: "translate(-50%, -50%) scale(1)", opacity: ".01" },
+        },
+        scaleSpin: {
+          "0%": { transform: "rotate(36deg) scale(1.2)" },
+          "40%": { transform: "rotate(80deg) scale(1.3)" },
+          "100%": { transform: "rotate(135deg)" },
         }
       }
     },

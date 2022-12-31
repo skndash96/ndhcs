@@ -108,6 +108,7 @@
           e.target.querySelector("button[type='submit']").disabled = true
           document.getElementById("rickroll").classList.remove("hidden")
           document.getElementById("rickroll").scrollIntoView()
+          formStatus.innerHTML = "Heh."
           return
         }
         
@@ -119,15 +120,9 @@
         })
       })
 
-      const queryString = {}
-      const urlSplit = window.location.href.split("?")
-      if (urlSplit.length > 1) {
-        urlSplit[1]
-          .split("&")
-          .forEach(p => (queryString[p.split("=")[0]] = decodeURIComponent(p.split("=")[1])))
-      }
-      if (queryString["m"]) {
-        formStatus.innerHTML = queryString["m"]
+      const params = window.location.href.split("?").length > 1 && Object.fromEntries(window.location.href.split("?")[1].split("&").map(x => [x.split("=")[0], decodeURIComponent(x.split("=")[1])]))
+      if (queryString?.m) {
+        formStatus.innerHTML = queryString.m
         formStatus.classList.remove("hidden")
       }
     })

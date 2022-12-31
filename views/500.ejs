@@ -13,7 +13,7 @@
   <%- include("partials/header"); %>
   
   <main class="px-4 py-8 mx-auto w-fit max-w-2xl">
-    <i class="block mx-auto text-amber-500 text-7xl"><%-include("../dist/icons/triangle-exclamation.svg")%></i>
+    <i class="block w-fit mx-auto text-amber-500 text-7xl"><%-include("../dist/icons/triangle-exclamation.svg")%></i>
     
     <h2 class="mt-4 font-bold text-center">
       500 - Server Error
@@ -39,6 +39,7 @@
       
       const params = window.location.href.split("?").length > 1 && Object.fromEntries(window.location.href.split("?")[1].split("&").map(x => [x.split("=")[0], decodeURIComponent(x.split("=")[1])]))
       if (params?.m) emsg.textContent = params.m
+      else emsg.parentElement.remove()
     })
   </script>
 </body>
