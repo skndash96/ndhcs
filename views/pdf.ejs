@@ -13,7 +13,7 @@
   <%- include("partials/header.ejs"); %>
   
   <main id="main" class="px-4 py-8 mx-auto w-fit max-w-2xl">
-    <div id="spinner"><i class="mr-2 fa-solid fa-spinner animate-spin"></i>Loading Preview...</div>
+    <div id="spinner"><i class="mr-2 animate-spin"><%-include("../dist/icons/spinner.svg")%></i>Loading Preview...</div>
   </main>
 
   <%- include("partials/footer.ejs"); %>
@@ -26,7 +26,7 @@
       const dl = document.createElement("a")
       dl.href = params.url
       dl.className = "mb-8 block text-underline text-sky-600"
-      dl.innerHTML = "<i class=\"mr-2 fa-solid fa-arrow-down\"></i>Direct Download Link"
+      dl.innerHTML = '<i class=\"mr-2\"><%-include("../dist/icons/arrow-down.svg")%></i>Direct Download Link'
       main.prepend(dl)
     } else {
       main.replaceChildren("PDF file not found, come back later.")

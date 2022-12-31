@@ -15,12 +15,12 @@
   <main class="">
     <section class="p-8 bg-amber-100">
       <h2 class="font-semibold text-center">
-        Latest News <button id="reloadNews" class="ml-2 text-lg text-slate-500 hover:bg-sky-300/50"><i class="fa-solid fa-arrows-rotate"></i></button>
+        Latest News <button id="reloadNews" class="ml-2 text-lg text-slate-500 hover:bg-sky-300/50"><i class=""><%-include("../dist/icons/arrows-rotate.svg")%></i></button>
       </h2>
 
       <div id="news" class="mt-8 w-fit mx-auto max-w-2xl grid sm:grid-cols-2 gap-4">
         <div id="newsSpinner" class="">
-          <i class="mr-2 fa-solid fa-spinner animate-spin"></i> Loading...
+          <i class="mr-2 animate-spin"><%-include("../dist/icons/spinner.svg")%></i> Loading...
         </div>
       </div>
     </section>
@@ -32,7 +32,7 @@
 
       <div id="events" class="mt-8 w-fit mx-auto max-w-2xl">
         <div id="eventsSpinner" class="">
-          <i class="mr-2 fa-solid fa-spinner animate-spin"></i> Loading...
+          <i class="mr-2 animate-spin"><%-include("../dist/icons/spinner.svg")%></i> Loading...
         </div>
       </div>
     </section>

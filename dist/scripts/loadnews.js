@@ -28,8 +28,8 @@ export default function loadNews(showMany = true, force = false) {
   }
 
   function writeNews(docs) {
-    while (newsEl.childNodes.length > 1) {
-      newsEl.removeChild(newsEl.lastChild)
+    while (newsEl.children.length > 1) {
+      newsEl.removeChild(newsEl.lastElementChild)
     }
     
     newsEl.append(...docs.map(({title,date,url}, i) => {
