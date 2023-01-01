@@ -13,9 +13,10 @@ export default function loadEvents(mini) {
   else {
     getDocs(query(collection(db, "events"), orderBy("date", "desc"), limit(10)))
     .then(docs => {
-      const events = [Date.now() + expTime]
+      let events = [Date.now() + expTime]
       docs.forEach(doc => events.push({id:doc.id, ...doc.data()}))
       localStorage["events"] = JSON.stringify(events)
+      
       writeEvs(events.slice(1))
     })
     .catch(e => {
@@ -47,9 +48,9 @@ export default function loadEvents(mini) {
           el.id = id
           el.className = "flex flex-col gap-1"
           el.innerHTML = `
-          <span class="">${title}</span>
+          <span class="font-semibold">${title}</span>
           <span class="text-sm">${("0"+date.getDate().toString()).slice(-2)}/${date.getMonth()+1}/${date.getFullYear()}</span>
-          <div><img class="w-full" src="${imgUrls[0]}" alt="${title}"></div>
+          <div><img class="w-full" src="${imgUrls[Math.floor(Math.random()*imgUrls.length)]}" alt="${title}"></div>
           <a href="/events?eid=${encodeURIComponent(id)}" class="underline text-center text-blue-600" target="_blank">View all</a>`
           eventsEl.classList.add("grid-cols-2", "sm:grid-cols-"+Math.min(docs.length,5), "md:grid-cols-"+Math.min(docs.length,7), "lg:grid-cols-"+Math.min(docs.length,9))
         } else {
@@ -88,7 +89,7 @@ export default function loadEvents(mini) {
     }))
     .then(evs => {
       if (!evs.length) evs.push("Events could not be loaded. Try again later.")
-      eventsEl.append(...evs.slice(0, mini ? 5 : evs.length))
+      eventsEl.append(...evs)
       spinner.classList.add("hidden")
       
       if (!mini) {
@@ -96,10 +97,9 @@ export default function loadEvents(mini) {
         indexEl.className = "list-decimal w-fit mx-auto flex flex-col gap-1"
         indexEl.innerHTML = docs.map(({id,title}) => `<li><a href="#${id}" class="hover:underline text-blue-600">${title}</a></li>`).join("")
         eventsEl.prepend(indexEl)
+        const querystring = window.location.href.split("?").length > 1 && Object.fromEntries(window.location.href.split("?")[1].split("&").map(x => [x.split("=")[0], decodeURIComponent(x.split("=")[1])]))
+        querystring?.eid && document.getElementById(querystring.eid)?.scrollIntoView(true)
       }
-      
-      const params = window.location.href.split("?").length > 1 && Object.fromEntries(window.location.href.split("?")[1].split("&").map(x => [x.split("=")[0], decodeURIComponent(x.split("=")[1])]))
-      params?.eid && document.getElementById(params.eid)?.scrollIntoView()
     })
   }
 }
