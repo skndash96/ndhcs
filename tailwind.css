@@ -74,6 +74,9 @@
   button.classic, a.classic {
     @apply inline-block bg-sky-600 text-gray-50 px-2 py-1 font-semibold shadow-md hover:shadow-lg hover:scale-95;
   }
+  i {
+    display: inline-block;
+  }
   i svg {
     width: 1em;
     display: inline-block;

@@ -35,10 +35,8 @@ export default function loadNews(showMany = true, force = false) {
     newsEl.append(...docs.map(({title,date,url}, i) => {
       date = new Date(date.seconds*1000)
       
-      let el = document.createElement("a")
-      el.href = "/pdf?url="+encodeURIComponent(url)
-      el.target = "_blank"
-      el.className = `${(showMany ? i > 9 : i > 5) ? "max-md:hidden " : ""}block relative flex gap-4 items-center shadow-sm bg-gray-50 hover:shadow-md hover:bg-slate-300`
+      let el = document.createElement("div")
+      el.className = `${(showMany ? i > 9 : i > 5) && "max-md:hidden "}block relative flex gap-4 items-center shadow-sm bg-gray-50 hover:shadow-md`
       el.innerHTML = `
         <div class="inline-block p-2 text-center bg-blue-400 text-gray-50">
           <h2 class="font-['Courier'] font-black">
@@ -48,9 +46,15 @@ export default function loadNews(showMany = true, force = false) {
             ${date.toLocaleString("default", { month: "short"})}
           </h4>
         </div>
-        <h4 class="px-1 dark:text-neutral-900">
-          ${title}
-        </h4>`
+        <div class="p-2 pl-1 w-full">
+          <h4 class="dark:text-neutral-900">
+            ${title}
+          </h4>`+
+          (url ? `<div class="w-fit ml-auto">
+          <a href="${url}" class="p-1 rounded-sm bg-sky-600 text-gray-50"><i><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg></i></a>
+          <a target="_blank" rel="nofollow" href="/pdf?url=${encodeURIComponent(url)}" class="ml-2 p-1 rounded-sm bg-sky-600 text-gray-50"><i><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg></i></a>
+          </div>` : "")+
+        "</div>"
 
       return el
     }))
