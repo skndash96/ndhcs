@@ -89,7 +89,7 @@ export default function loadEvents(mini) {
     }))
     .then(evs => {
       if (!evs.length) evs.push("Events could not be loaded. Try again later.")
-      eventsEl.append(...evs)
+      eventsEl.append(...evs.slice(0, mini ? 5 : evs.length))
       spinner.classList.add("hidden")
       
       if (!mini) {
