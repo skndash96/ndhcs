@@ -36,18 +36,21 @@ export default function loadNews(showMany = true, force = false) {
     moreEl.className = "underline md:col-span-2 text-center text-blue-600"
     moreEl.textContent = "Load more"
     moreEl.onclick = e => {
-      let els = e.target.parentElement.querySelectorAll(".hidden")
-      for (let i=1; i < els.length; i++) {
-        els[i].classList.remove("hidden")
+      let els = e.target.parentElement.querySelectorAll(".mmh")
+      for (let i=0; i < els.length; i++) {
+        els[i].classList.remove("max-md:hidden")
       }
-      els.length === 1 && (e.target.textContent = "No further Items.", e.target.disabled = true, e.target.classList.remove("underline"))
+      if (!els.length) {
+        e.target.textContent = "No further Items."
+        e.target.disabled = true
+        e.target.classList.remove("underline")
+      } else e.target.remove()
     }
     
     newsEl.append(...docs.map(({title,date,url}, i) => {
       date = new Date(date.seconds*1000)
-      
       let el = document.createElement("div")
-      el.className = `${i > 9 ? "max-md:hidden " : ""}${i > (showMany ? 9 :3) ? "hidden " : ""}block relative flex gap-4 items-center shadow-sm bg-gray-50 hover:shadow-md`
+      el.className = `${(showMany && i > 9) || (!showMany && i > 3) ? "mmh max-md:hidden " : "" }${!showMany && i > 11 ? "md:hidden " : ""}block relative flex gap-4 items-center items-stretch shadow-sm bg-gray-50 hover:shadow-md`
       el.innerHTML = `
         <div class="inline-block p-2 text-center bg-blue-400 text-gray-50">
           <h2 class="font-['Courier'] font-black">
