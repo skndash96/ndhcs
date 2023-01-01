@@ -2,5 +2,16 @@
   "cleanUrls": true,
   "rewrites": [
     { "source": "/(.*)", "destination": "/404" }
+  ],
+  "headers": [
+    {
+      "source": "/sitemap.xml",
+      "headers" : [
+        {
+          "key" : "content-type",
+          "value" : "application/xml"
+        }
+      ]
+    }
   ]
 }
