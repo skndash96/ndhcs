@@ -85,7 +85,7 @@ export default function loadEvents(mini) {
       spinner.classList.add("hidden")
       
       const params = window.location.href.split("?").length > 1 && Object.fromEntries(window.location.href.split("?")[1].split("&").map(x => [x.split("=")[0], decodeURIComponent(x.split("=")[1])]))
-      params.eid && document.getElementById(params.eid)?.scrollIntoView()
+      params?.eid && document.getElementById(params.eid)?.scrollIntoView()
     })
   }
 }
