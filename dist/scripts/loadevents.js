@@ -46,13 +46,13 @@ export default function loadEvents(mini) {
         if (mini) {
           var el = document.createElement("div")
           el.id = id
-          el.className = "flex flex-col gap-1"
+          el.className = "h-full relative flex flex-col gap-1 bg-stone-800/75 shadow-lg"
           el.innerHTML = `
-          <span class="font-semibold">${title}</span>
-          <span class="text-sm">${("0"+date.getDate().toString()).slice(-2)}/${date.getMonth()+1}/${date.getFullYear()}</span>
-          <div><img class="w-full" src="${imgUrls[Math.floor(Math.random()*imgUrls.length)]}" alt="${title}"></div>
-          <a href="/events?eid=${encodeURIComponent(id)}" class="underline text-center text-blue-600" target="_blank">View all</a>`
-          eventsEl.classList.add("grid-cols-2", "sm:grid-cols-"+Math.min(docs.length,5), "md:grid-cols-"+Math.min(docs.length,7), "lg:grid-cols-"+Math.min(docs.length,9))
+          <span class="px-2 py-1 text-gray-50 font-semibold">${title}</span>
+          <span class="px-2 py-1 text-blue-300 grow text-sm">${("0"+date.getDate().toString()).slice(-2)}/${date.getMonth()+1}/${date.getFullYear()}</span>
+          <a href="/events?eid=${encodeURIComponent(id)}" class="p-1 block absolute bottom-0 right-0 bg-slate-700 text-gray-50 icon" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg></a>
+          <div class="min-h-[5rem] shadow-[0_-1px_10px_5px_rgba(0,0,0,.15)] bg-slate-400"><img class="w-full" src="${imgUrls[Math.floor(Math.random()*imgUrls.length)]}" alt="${title}"></div>`
+          eventsEl.classList.add("grid-cols-2", "sm:grid-cols-"+Math.min(docs.length,4), "md:grid-cols-"+Math.min(docs.length,6), "lg:grid-cols-"+Math.min(docs.length,8))
         } else {
           let cols = 2,
             mdcols = 3
@@ -89,7 +89,7 @@ export default function loadEvents(mini) {
     }))
     .then(evs => {
       if (!evs.length) evs.push("Events could not be loaded. Try again later.")
-      eventsEl.append(...evs.slice(0, mini ? 5 : evs.length))
+      eventsEl.append(...evs.slice(0, mini ? 8 : evs.length))
       spinner.classList.add("hidden")
       
       if (!mini) {
