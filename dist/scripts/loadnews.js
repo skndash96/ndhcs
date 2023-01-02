@@ -53,12 +53,12 @@ export default function loadNews(showMany = true, force = false) {
       el.className = `${(showMany && i > 9) || (!showMany && i > 3) ? "mmh max-md:hidden " : "" }${!showMany && i > 11 ? "md:hidden " : ""}block relative flex gap-4 items-center items-stretch shadow-sm bg-gray-50 hover:shadow-md`
       el.innerHTML = `
         <div class="inline-block p-2 text-center bg-blue-400 text-gray-50">
-          <h2 class="font-['Courier'] font-black">
+          <span class="text-2xl font-['Courier'] font-black">
             ${("0"+date.getDate().toString()).slice(-2)}
-          </h2>
-          <h4 class="font-black">
+          </span>
+          <span class="text-lg font-['Canela'] font-black">
             ${date.toLocaleString("default", { month: "short"})}
-          </h4>
+          </span>
         </div>
         <div class="p-2 pl-1 w-full">
           <h4 class="">
