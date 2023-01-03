@@ -71,7 +71,7 @@ export default function loadNews(showMany = true, force = false) {
           ` : "")+
         "</div>"
 
-      el.querySelector(".dl").onclick = e => e.currentTarget.firstElementChild.classList.add("bg-green-700")
+      el.querySelector(".dl")?.onclick = e => e.currentTarget.firstElementChild.classList.add("bg-green-700")
       return el
     }), moreEl)
   }
