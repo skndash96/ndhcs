@@ -85,10 +85,10 @@
     </h2>
     
     <div class="mt-8 w-fit mx-auto flex flex-col justify-center items-center">
+      <div id="eventsSpinner" class="">
+        <i class="mr-2 animate-spin"><%-include("../dist/icons/spinner.svg")%></i> Loading Events...
+      </div>
       <div id="events" class="px-4 max-w-4xl mx-auto grid grid-rows-1 grid-flow-row gap-4 justify-center items-end">
-        <div id="eventsSpinner" class="">
-          <i class="mr-2 animate-spin"><%-include("../dist/icons/spinner.svg")%></i> Loading Events...
-        </div>
       </div>
     
       <div id="news" class="mt-8 max-w-2xl grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -102,7 +102,7 @@
       </a> <br>
 
       <a href="/events" class="mt-2 classic">
-        <i class="mr-2"><%-include("../dist/icons/angle-right.svg")%></i> More Stuffs
+        <i class="mr-2"><%-include("../dist/icons/angle-right.svg")%></i> View all Stuffs
       </a>
     </div>
   </section>
@@ -125,7 +125,7 @@
       </h3>
 
       <a href="/about" class="mt-4 classic">
-        <i class="mr-2"><%-include("../dist/icons/angle-right.svg")%></i>Learn More
+        <i class="mr-2"><%-include("../dist/icons/angle-right.svg")%></i>More about us
       </a>
     </div>
   </section>
@@ -185,12 +185,11 @@
           <p class="max-w-xl"> We try to invoke a sense of integration among the teachers, students as well as the parents/guardians. This consequently enhances communication and social skills in children. </p>
         </div>
       </div>
-    </div>
-    
-    <div class="mt-4 mb-8 w-fit mx-auto">
-      <a href="/facility" class="classic">
-        More
-      </a>
+      <div class="mt-8 w-fit mx-auto">
+        <a href="/facility" class="classic">
+          About Student Life
+        </a>
+      </div>
     </div>
   </section>
 
@@ -315,12 +314,12 @@
         admsnEl.classList.add("hidden")
       })
       
-      const newsSpinner = document.getElementById("newsSpinner")
       document.getElementById("reloadNews")
         .addEventListener("click", e => {
           e.target.disabled = true
-          newsSpinner.classList.remove("hidden")
           loadNews(true, true)
+          loadEvents(true, true)
+          e.target.remove()
         })
       
       loadNews(false, false)

@@ -20,7 +20,7 @@ module.exports = {
     extend: {
       screens: {
         'sm': '576px',
-        'md': '767px',
+        'md': '767px', /*changed in ./dist/scripts/loadnews.js*/
         'max-md': {'raw': '(max-width: 766.99px)'}
       },
       animation: {

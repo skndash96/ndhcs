@@ -8,12 +8,12 @@
   <link rel="stylesheet" href="out.css">
   <script src="https://kit.fontawesome.com/f3339b4404.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="">
   <%- include("partials/loader"); %>
   <%- include("partials/header"); %>
   
-  <main class="">
-    <section class="p-8 bg-amber-100">
+  <main class="grow">
+    <section class="p-8 bg-amber-100 min-h-none">
       <h2 class="font-semibold text-center">
         Latest News <button id="reloadNews" class="ml-2 text-lg text-slate-500 hover:bg-sky-300/50"><i class=""><%-include("../dist/icons/arrows-rotate.svg")%></i></button>
       </h2>
@@ -31,7 +31,7 @@
       </h2>
 
       <div id="events" class="mt-8 w-fit mx-auto max-w-2xl">
-        <div id="eventsSpinner" class="">
+        <div id="eventsSpinner" class="w-fit mx-auto">
           <i class="mr-2 animate-spin"><%-include("../dist/icons/spinner.svg")%></i> Loading...
         </div>
       </div>
@@ -49,16 +49,16 @@
     import loadEvents from "./scripts/loadevents.js"
 
     window.addEventListener("load", () => {
-      const newsSpinner = document.getElementById("newsSpinner")
       document.getElementById("reloadNews")
         .addEventListener("click", e => {
           e.target.disabled = true
-          newsSpinner.classList.remove("hidden")
           loadNews(true, true)
+          loadEvents(false, true)
+          e.target.remove()
         })
     
       loadNews(true, false)
-      loadEvents()
+      loadEvents(false)
     })
   </script>
 </body>
