@@ -4,9 +4,7 @@ export default function loadEvents(mini, force=false) {
   const eventsEl = document.getElementById("events")
   const spinner = document.getElementById("eventsSpinner")
 
-  while (eventsEl.children.length > 1) {
-    eventsEl.removeChild(eventsEl.lastElementChild)
-  }
+  eventsEl.replaceChildren() /*Spinner is out.*/
   spinner.classList.remove("hidden")
   
   const expTime = 24*60*60*1000

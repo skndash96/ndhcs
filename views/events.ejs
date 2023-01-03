@@ -13,7 +13,7 @@
   <%- include("partials/header"); %>
   
   <main class="grow">
-    <section class="p-8 bg-amber-100 min-h-none">
+    <section class="p-8 bg-amber-100">
       <h2 class="font-semibold text-center">
         Latest News <button id="reloadNews" class="ml-2 text-lg text-slate-500 hover:bg-sky-300/50"><i class=""><%-include("../dist/icons/arrows-rotate.svg")%></i></button>
       </h2>
@@ -30,11 +30,11 @@
         Events
       </h2>
 
-      <div id="events" class="mt-8 w-fit mx-auto max-w-2xl">
-        <div id="eventsSpinner" class="w-fit mx-auto">
-          <i class="mr-2 animate-spin"><%-include("../dist/icons/spinner.svg")%></i> Loading...
-        </div>
+      <div id="eventsSpinner" class="w-fit mx-auto">
+        <i class="mr-2 animate-spin"><%-include("../dist/icons/spinner.svg")%></i> Loading...
       </div>
+      
+      <div id="events" class="mt-8 w-fit mx-auto max-w-2xl"></div>
     </section>
 
     <h2 class="my-8 font-semibold text-center">
