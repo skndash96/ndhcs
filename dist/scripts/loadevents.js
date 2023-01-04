@@ -45,12 +45,14 @@ export default function loadEvents(mini, force=false) {
         if (mini) {
           var el = document.createElement("div")
           el.id = id
-          el.className = "h-full group relative flex flex-col gap-1 bg-stone-800/75 shadow-lg"
+          el.className = "h-full relative flex flex-col group shadow-lg hover:shadow-xl"
           el.innerHTML = `
           <a href="/events?eid=${encodeURIComponent(id)}" class="block absolute top-0 bottom-0 right-0 left-0" target="_blank"></a>
-          <span class="px-2 py-1 group-hover:underline text-gray-50 font-semibold">${title}</span>
-          <span class="px-2 py-1 text-blue-300 grow text-sm">${("0"+date.getDate().toString()).slice(-2)}/${date.getMonth()+1}/${date.getFullYear()}</span>
-          <div class="min-h-[5rem] shadow-[0_-1px_10px_5px_rgba(0,0,0,.15)] bg-slate-400"><img class="w-full" src="${imgUrls[Math.floor(Math.random()*imgUrls.length)]}" alt="${title}"></div>`
+          <div class="min-h-[5rem] grow bg-slate-400"><img class="w-full h-full" src="${imgUrls[Math.floor(Math.random()*imgUrls.length)]}" alt="${title}"></div>
+          <div class="p-2 bg-blue-900 text-gray-50">
+            <span class="group-hover:underline text-gray-50 font-semibold">${title}</span><br>
+            <span class="text-blue-200 text-sm">${("0"+date.getDate().toString()).slice(-2)}/${date.getMonth()+1}/${date.getFullYear()}</span>
+          </div>`
           eventsEl.classList.add("grid-cols-2", "sm:grid-cols-"+Math.min(docs.length,4), "md:grid-cols-"+Math.min(docs.length,6), "lg:grid-cols-"+Math.min(docs.length,8))
         } else {
           let cols = 2,
