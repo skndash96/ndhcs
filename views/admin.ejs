@@ -17,6 +17,10 @@
       Admin
     </h2>
 
+    <div id="spinner" class="mt-4 w-fit mx-auto">
+      <i class="animate-spin"><%-include("../dist/icons/spinner.svg")%></i> Loading
+    </div>
+    
     <div class="mt-4 mb-8 w-fit mx-auto">
       <span class="text-sm text-slate-800">Choose an Option to edit:</span>
       <select id="page-select" class="mt-2" disabled>
@@ -24,11 +28,8 @@
         <option value="admission"> Admissions </option>
         <option value="news"> News </option>
         <option value="events"> Events </option>
+        <option value="why"> Why? </option>
       </select>
-    </div>
-    
-    <div id="spinner" class="mt-4 w-fit mx-auto">
-      <i class="animate-spin"><%-include("../dist/icons/spinner.svg")%></i> Loading
     </div>
 
     <div id="wrapper"></div>
@@ -94,7 +95,8 @@
       function loadPage(name) {
         const wrapper = document.getElementById("wrapper")
         
-        if (!["admission", "news", "events"].includes(name)) {
+        const pages = ["admission", "news", "events", "why"]
+        if (!pages.includes(name)) {
           wrapper.replaceChildren()
           spinner.classList.add("hidden")
           return
@@ -103,6 +105,29 @@
         const Name = name.charAt(0).toUpperCase() + name.substring(1)
         spinner.classList.remove("hidden")
 
+        if (name === "why") {
+          const el = document.createElement("div")
+          el.className = "mt-16 px-4 w-fit mx-auto max-w-2xl"
+          el.innerHTML = `
+            <h2> How is this site Good? </h2><br>
+            <p>Obviously you could come to a conclusion just by the looks of :ts: compared to the <a href="http://notredamehcs.org" target="_blank" rel="nofollow" class="text-blue-600 hover:underline">current :os:</a>. But that may not be the only reason for you to regard this better. Yes, I got more to add.</p><br>
+            <p>:os: does not have <b>SSL certificate</b> which makes it less secure and it comes with security warning for the users which is not the case in :ts:</p><br>
+            <p>:os:'s Interface is a bit off on mobile through which most clients visit our school. :ts:'s User Interface and Experience is delicate.</p><br>
+            <p>:ts: has better way of presentation of content and serving what the clients' need.</p><br>
+            <p>Existence of <a href="/admin" target="_blank" rel="nofollow" class="text-blue-600 hover:underline">Admin page</a> to manually add News and Events is available. Not sure how this works in :os:, yet trust me, I can do better.</p><br>
+            <h4> Page performance (recommended by Google) comparision. </h4>
+            <div class="w-fit mx-auto max-w-xs"><img src="images/score.webp" alt="Scores of :os: versus :ts:" class="w-full"/></div>
+            <br><p>:ts: is perfect in SEO (Search Engine Optimization) which would help ranking and showing up in Search results.</p><br>
+            <p>:os: takes a few(2-3) seconds to load pages which sometimes annoy users. :ts: gives a quite good impression when it comes to perfomance.</p><br>
+            <p>All these points should explain how good this site is. Got any questions? <a href="mailto:dashskndash@gmail.com" target="_blank" rel="nofollow" class="text-blue-600 hover:underline">Mail me</a> right away!</p>
+          `.replaceAll(":os:", "Official Site")
+          .replaceAll(":ts:", "This Site")
+
+          spinner.classList.add("hidden")
+          wrapper.replaceChildren(el)
+          return
+        }
+        
         if (name === "admission") {
           getDoc(doc(db, "misc/"+name))
           .then(doc => {

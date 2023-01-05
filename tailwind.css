@@ -48,7 +48,7 @@
     @apply hidden;
   }
   #nav.open {
-    max-height: 80vh !important;
+    max-height: 90vh !important;
   }
   .testimonials {
     @apply relative pl-28 pr-40 flex gap-4 overflow-x-scroll snap-mandatory snap-x scroll-px-16;

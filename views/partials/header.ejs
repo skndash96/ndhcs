@@ -29,6 +29,12 @@
       <li class="px-2 py-1 max-md:font-bold hover:border-b-2 border-rose-500 md:border-teal-400 transition-all md:hover:bg-slate-600">
         <a onclick="toggleNav(true)" href="#footer"> Contact </a>
       </li>
+      <li class="px-2 py-1 max-md:font-bold hover:border-b-2 border-rose-500 md:border-teal-400 transition-all md:hover:bg-slate-600 text-blue-900 md:text-blue-500">
+        <a href="https://parent.neverskip.com" rel="external nofollow">
+          <i class="mx-2"><%-include("../../dist/icons/retro-phone.svg")%></i>
+          <span class="md:hidden">Parent App</span>
+        </a>
+      </li>
     </ul>
     <h6 class="md:hidden my-4 px-2 text-right">
       Notre Dame Of Holy Cross School, <br>
@@ -36,7 +42,9 @@
     </h6>
   </nav>
   
-  <button id="navToggle" class="md:hidden">
-    MENU
-  </button>
+  <div class="md:hidden">
+    <button id="navToggle">
+      MENU
+    </button>
+  </div>
 </header>  
