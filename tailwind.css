@@ -51,12 +51,12 @@
     max-height: 90vh !important;
   }
   .testimonials {
-    @apply relative pl-28 pr-40 flex gap-4 overflow-x-scroll snap-mandatory snap-x scroll-px-16;
+    @apply relative pl-28 pr-40 sm:pr-52 md:pr-64 lg:pr-80 flex gap-4 overflow-x-scroll snap-mandatory snap-x scroll-px-16;
   }
   .testimonials * {
     @apply snap-always snap-start;
   }
-  .carouselx::-webkit-scrollbar {
+  .testimonials::-webkit-scrollbar {
     @apply hidden;
   }
   .cardBox {
