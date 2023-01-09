@@ -11,7 +11,7 @@
     font-size: calc(0.7rem + 0.7vw);
   }
   body {
-    @apply min-h-screen flex flex-col justify-between font-['Cabin'];
+    @apply min-h-screen overflow-x-hidden flex flex-col justify-between font-['Cabin'];
     background-color: white;
   }
   h1, h2, h3, h4, h5, h6 {
