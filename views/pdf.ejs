@@ -17,7 +17,9 @@
   </main>
 
   <%- include("partials/footer.ejs"); %>
-  <script src="scripts/index.js"></script>
+  <script>
+    <%-include("../dist/scripts/index.js")%>
+  </script>
   <script>
     const params = window.location.href.split("?").length > 1 && Object.fromEntries(window.location.href.split("?")[1].split("&").map(x => [x.split("=")[0], decodeURIComponent(x.split("=")[1])]))
     const main = document.getElementById("main")

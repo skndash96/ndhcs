@@ -36,7 +36,9 @@
   </main>
 
   <%- include("partials/footer"); %>
-  <script src="scripts/index.js"></script>
+  <script>
+    <%-include("../dist/scripts/index.js")%>
+  </script>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
     import { getStorage, uploadBytes, deleteObject, list, ref } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js"
