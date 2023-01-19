@@ -45,7 +45,7 @@ export default function loadEvents(mini, force=false) {
         if (mini) {
           var el = document.createElement("div")
           el.id = id
-          el.className = "h-full relative flex flex-col group shadow-lg hover:shadow-xl"
+          el.className = "h-full slide relative flex flex-col group shadow-lg hover:shadow-xl"
           el.innerHTML = `
           <a href="/events?eid=${encodeURIComponent(id)}" class="block absolute top-0 bottom-0 right-0 left-0" target="_blank"></a>
           <div class="min-h-[5rem] grow bg-slate-400"><img class="w-full h-full" src="${imgUrls[Math.floor(Math.random()*imgUrls.length)]}" alt="${title}"></div>
@@ -53,7 +53,7 @@ export default function loadEvents(mini, force=false) {
             <span class="group-hover:underline text-gray-50 font-semibold">${title}</span><br>
             <span class="text-blue-200 text-sm">${("0"+date.getDate().toString()).slice(-2)}/${date.getMonth()+1}/${date.getFullYear()}</span>
           </div>`
-          eventsEl.classList.add("grid-cols-2", "sm:grid-cols-"+Math.min(docs.length,4), "md:grid-cols-"+Math.min(docs.length,6), "lg:grid-cols-"+Math.min(docs.length,8))
+          eventsEl.classList.add("max-sm:carousel", "grid-cols-2", "sm:grid-cols-"+Math.min(docs.length,4), "md:grid-cols-"+Math.min(docs.length,6), "lg:grid-cols-"+Math.min(docs.length,8))
         } else {
           let cols = 2,
             mdcols = 3
@@ -93,13 +93,31 @@ export default function loadEvents(mini, force=false) {
       eventsEl.append(...evs.slice(0, mini ? 8 : evs.length))
       spinner.classList.add("hidden")
       
+      const indexEl= document.createElement("ol")
       if (!mini) {
-        const indexEl= document.createElement("ol")
         indexEl.className = "list-decimal w-fit mx-auto flex flex-col gap-1"
         indexEl.innerHTML = docs.map(({id,title}) => `<li><a href="#${id}" class="hover:underline text-blue-600">${title}</a></li>`).join("")
-        eventsEl.prepend(indexEl)
         const querystring = window.location.href.split("?").length > 1 && Object.fromEntries(window.location.href.split("?")[1].split("&").map(x => [x.split("=")[0], decodeURIComponent(x.split("=")[1])]))
         querystring?.eid && document.getElementById(querystring.eid)?.scrollIntoView(true)
+        eventsEl.prepend(indexEl)
+      } else {
+        indexEl.className = "mt-4 w-fit mx-auto sm:hidden flex gap-1"
+        indexEl.innerHTML = new Array(evs.length).fill().map(() => '<div class="w-[.5rem] h-[.5rem] bg-gray-400 rounded-full evIndex"></div>').join("")
+        eventsEl.addEventListener("scroll", ({ currentTarget: { scrollLeft, children } }) => {
+          let arr = Array.from(indexEl.children)
+          
+          let _new = Array.from(children).findIndex(el => el.offsetLeft > scrollLeft)
+          let _old = arr.findIndex(el => el.classList.contains("active"))
+          
+          if (_old === -1) {
+            arr[0].classList.add("active")
+          } else if (_new !== _old) {
+            arr[_old]?.classList.remove("active")
+            arr[_new].classList.add("active")
+          }
+        })
+        eventsEl.parentElement.insertBefore(indexEl, eventsEl.nextSibling)
+        if (window.getComputedStyle(indexEl).getPropertyValue("display") === "none") indexEl.remove()
       }
     })
   }

@@ -82,10 +82,29 @@
     display: inline-block;
     fill: currentColor;
   }
+  div.evIndex.active {
+    background: red;
+  }
 }
 
 @layer utilities {
-  
+  .carousel {
+    @apply pl-24 pr-24 sm:pr-40 md:pr-52 lg:pr-64 flex gap-4 overflow-x-scroll justify-start items-stretch snap-mandatory snap-x scroll-px-4;
+    @apply w-screen max-w-lg mx-auto;
+  }
+  .carousel .slide {
+    @apply h-auto shrink-0 self-stretch;
+    @apply snap-always snap-start;
+  }
+  .carousel .slide:last-child {
+    @apply snap-end;
+  }
+  .carousel .slide {
+    width: calc(100% - 2rem);
+  }
+  .carousel::-webkit-scrollbar {
+    @apply hidden;
+  }
 }
 
 @font-face {

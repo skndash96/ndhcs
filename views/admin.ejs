@@ -24,11 +24,11 @@
     <div class="mt-4 mb-8 w-fit mx-auto">
       <span class="text-sm text-slate-800">Choose an Option to edit:</span>
       <select id="page-select" class="mt-2" disabled>
-        <option value="none" selected> None </option>
+        <option value="none"> None </option>
+        <option value="why" selected> Why? </option>
         <option value="admission"> Admissions </option>
         <option value="news"> News </option>
         <option value="events"> Events </option>
-        <option value="why"> Why? </option>
       </select>
     </div>
 
@@ -92,6 +92,7 @@
         spinner.classList.add("hidden")
         pageSelector.disabled = false
         pageSelector.addEventListener("change", e => loadPage(e.target.value))
+        pageSelector.value && loadPage(pageSelector.value)
       }
 
       function loadPage(name) {

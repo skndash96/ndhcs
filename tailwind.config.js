@@ -21,6 +21,7 @@ module.exports = {
       screens: {
         'sm': '576px',
         'md': '767px', /*changed in ./dist/scripts/loadnews.js*/
+        'max-sm': {'raw': '(max-width: 575.99px)'},
         'max-md': {'raw': '(max-width: 766.99px)'}
       },
       animation: {
