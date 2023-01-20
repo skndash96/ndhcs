@@ -290,39 +290,39 @@
     <%-include("../dist/scripts/index.js")%>
   </script>
   <script type="module">
-    import { db, getDoc, doc } from "./scripts/firebase.js"
-    import loadNews from "./scripts/loadnews.js"
-    import loadEvents from "./scripts/loadevents.js"
+    import { db, getDoc, doc } from "./scripts/firebase.js";
+    import loadNews from "./scripts/loadnews.js";
+    import loadEvents from "./scripts/loadevents.js";
 
     window.addEventListener("load", () => {
-      const admsnEl = document.getElementById("admission")
-      const admsnData = JSON.parse(localStorage["admission"] || null)
-      const expTime = 24*60*60*1000
+      const admsnEl = document.getElementById("admission");
+      const admsnData = JSON.parse(localStorage["admission"] || null);
+      const expTime = 24*60*60*1000;
 
       if (admsnData?.expiry > Date.now()) {
-        if (!admsnData.ongoing) admsnEl.remove()
+        if (!admsnData.ongoing) admsnEl.remove();
       } else getDoc(doc(db, "misc/admission"))
       .then(doc => {
-        const data = doc.data()
-        localStorage["admission"] = JSON.stringify({expiry: Date.now()+expTime,...data})
-        if (!data?.ongoing) admsnEl.classList.add("hidden")
+        const data = doc.data();
+        localStorage["admission"] = JSON.stringify({expiry: Date.now()+expTime,...data});
+        if (!data?.ongoing) admsnEl.classList.add("hidden");
       })
       .catch(e => {
-        console.error(e)
-        admsnEl.classList.add("hidden")
-      })
+        console.error(e);
+        admsnEl.classList.add("hidden");
+      });
       
       document.getElementById("reloadNews")
         .addEventListener("click", e => {
-          e.target.disabled = true
-          loadNews(true, true)
-          loadEvents(true, true)
-          e.target.remove()
-        })
+          e.target.disabled = true;
+          loadNews(true, true);
+          loadEvents(true, true);
+          e.target.remove();
+        });
       
-      loadNews(false, false)
-      loadEvents(true)
-    })
+      loadNews(false, false);
+      loadEvents(true);
+    });
   </script>
 </body>
 </html>

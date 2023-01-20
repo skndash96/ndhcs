@@ -6,7 +6,6 @@
   <%- include("partials/head"); %>
   
   <link rel="stylesheet" href="out.css">
-  <script src="https://kit.fontawesome.com/f3339b4404.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <%- include("partials/loader"); %>
@@ -46,88 +45,88 @@
 
   <%- include("partials/footer"); %>
   
-  <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-  
   <script>
     <%-include("../dist/scripts/index.js")%>
   </script>
-  <script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, getIdTokenResult, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+    
+    const firebaseappConfig = {
+      apiKey: "AIzaSyB9S-lwz4yOHcajjQmFD8Qj9AynV-wZ0A0",
+      authDomain: "ndhcs-361bf.firebaseapp.com",
+      projectId: "ndhcs-361bf",
+      storageBucket: "ndhcs-361bf.appspot.com",
+      messagingSenderId: "644967053944",
+      appId: "1:644967053944:web:ff6463c5e53ed7c0c5cb8d",
+      measurementId: "G-4QGDHBZP09"
+    };
+
+    const app = initializeApp(firebaseappConfig);
+    const auth = getAuth(app);
+    
     window.addEventListener("load", () => {
-      const firebaseConfig = {
-        apiKey: "AIzaSyB9S-lwz4yOHcajjQmFD8Qj9AynV-wZ0A0",
-        authDomain: "ndhcs-361bf.firebaseapp.com",
-        projectId: "ndhcs-361bf",
-        storageBucket: "ndhcs-361bf.appspot.com",
-        messagingSenderId: "644967053944",
-        appId: "1:644967053944:web:ff6463c5e53ed7c0c5cb8d",
-        measurementId: "G-4QGDHBZP09"
-      };
+      const formStatus = document.getElementById("formStatus");
       
-      const app = firebase.initializeApp(firebaseConfig);
-      const auth = firebase.auth(app)
+      onAuthStateChanged(auth, async user => {
+        if (!user) return;
 
-      const formStatus = document.getElementById("formStatus")
-      
-      auth.onAuthStateChanged(async user => {
-        if (!user) return
-
-        formStatus.classList.remove("hidden")
-        formStatus.style.color = "#000"
-        formStatus.innerHTML = "Loading..."
+        formStatus.classList.remove("hidden");
+        formStatus.style.color = "#000";
+        formStatus.innerHTML = "Loading...";
         
-        user.getIdTokenResult()
+        getIdTokenResult(user)
         .then(token => {
-          let gap = Date.now()- (new Date(token.authTime)).getTime()
+          let gap = Date.now()- (new Date(token.authTime)).getTime();
           if (gap > 10 * 60 * 1000) auth.signOut()
             .then(() => {
-              formStatus.innerHTML = "Last Session Expired, Re-enter Credentials."
+              formStatus.innerHTML = "Last Session Expired, Re-enter Credentials.";
             })
             .catch(e => {
-              window.location = "/500?m="+encodeURI(e.message)
-            })
+              window.location = "/500?m="+encodeURI(e.message);
+            });
           else {
-            formStatus.innerHTML = "Authorized"
-            window.location = "/admin"
+            formStatus.innerHTML = "Authorized";
+            window.location = "/admin";
           }
         })
         .catch(e => {
-          window.location = "/500?m="+encodeURI(e.message)
-        })
-      })
+          window.location = "/500?m="+encodeURI(e.message);
+        });
+      });
 
       document.getElementById("authForm")
       .addEventListener("submit", e => {
-        e.preventDefault()
-        formStatus.classList.remove("hidden")
-        formStatus.innerHTML = "Loading..."
+        e.preventDefault();
+        formStatus.classList.remove("hidden");
+        formStatus.innerHTML = "Loading...";
         
-        const data = new FormData(e.target)
-        const email = data.get("email")
-        const password = data.get("password")
+        const data = new FormData(e.target);
+        const email = data.get("email");
+        const password = data.get("password");
 
         if (email === "visitor.ndhcs@gmail.com" && password === "12345678") {
-          e.target.querySelector("button[type='submit']").disabled = true
-          document.getElementById("rickroll").classList.remove("hidden")
-          document.getElementById("rickroll").scrollIntoView()
-          formStatus.innerHTML = "Heh."
-          return
+          e.target.querySelector("button[type='submit']").disabled = true;
+          document.getElementById("rickroll").classList.remove("hidden");
+          document.getElementById("rickroll").scrollIntoView();
+          formStatus.innerHTML = "Heh.";
+          return;
         }
         
-        auth.signInWithEmailAndPassword(email, password)
+        signInWithEmailAndPassword(auth, email, password)
         .catch(e => {
-          console.log(e.message)
-          formStatus.style.color = "#f00"
-          formStatus.innerHTML = "Bad Credentials"
-        })
-      })
+          console.error(e.message);
+          formStatus.style.color = "#f00";
+          formStatus.innerHTML = "Bad Credentials";
+        });
+      });
 
-      const params = window.location.href.split("?").length > 1 && Object.fromEntries(window.location.href.split("?")[1].split("&").map(x => [x.split("=")[0], decodeURIComponent(x.split("=")[1])]))
+      const queryString = window.location.href.split("?").length > 1 && Object.fromEntries(window.location.href.split("?")[1].split("&").map(x => [x.split("=")[0], decodeURIComponent(x.split("=")[1])]));
       if (queryString?.m) {
-        formStatus.innerHTML = queryString.m
-        formStatus.classList.remove("hidden")
+        formStatus.innerHTML = queryString.m;
+        formStatus.classList.remove("hidden");
       }
-    })
+    });
   </script>
 </body>
 </html>

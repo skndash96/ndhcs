@@ -6,7 +6,6 @@
   <%- include("partials/head"); %>
   
   <link rel="stylesheet" href="out.css">
-  <script src="https://kit.fontawesome.com/f3339b4404.js" crossorigin="anonymous"></script>
 </head>
 <body class="">
   <%- include("partials/loader"); %>
@@ -47,21 +46,21 @@
     <%-include("../dist/scripts/index.js")%>
   </script>
   <script type="module">
-    import loadNews from "./scripts/loadnews.js"
-    import loadEvents from "./scripts/loadevents.js"
+    import loadNews from "./scripts/loadnews.js";
+    import loadEvents from "./scripts/loadevents.js";
 
     window.addEventListener("load", () => {
       document.getElementById("reloadNews")
         .addEventListener("click", e => {
-          e.target.disabled = true
-          loadNews(true, true)
-          loadEvents(false, true)
-          e.target.remove()
-        })
+          e.target.disabled = true;
+          loadNews(true, true);
+          loadEvents(false, true);
+          e.target.remove();
+        });
     
-      loadNews(true, false)
-      loadEvents(false)
-    })
+      loadNews(true, false);
+      loadEvents(false);
+    });
   </script>
 </body>
 </html>

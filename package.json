@@ -1,5 +1,5 @@
 {
-  "name": "nodejs",
+  "name": "ndhcs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,8 +7,8 @@
     "build": "npx tailwindcss -i ./tailwind.css -o ./dist/out.css --minify && node build.js",
     "dev": "npx tailwindcss -i ./tailwind.css -o ./dist/out.css --minify && node index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["school", "cbse", "notredame", "holycross"],
+  "author": "skndash96",
   "license": "ISC",
   "dependencies": {
     "@types/node": "^18.0.6",

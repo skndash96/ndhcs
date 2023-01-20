@@ -6,7 +6,6 @@
   <%- include("partials/head"); %>
   
   <link rel="stylesheet" href="out.css">
-  <script src="https://kit.fontawesome.com/f3339b4404.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <%# include("partials/loader"); %>
@@ -59,11 +58,12 @@
     }
 
     const app = initializeApp(firebaseappConfig)
+    const auth = getAuth(app)
     const db = getFirestore(app)
     const storage = getStorage(app)
-    const auth = getAuth(app)
  
     window.addEventListener("load", () => {
+      /*repetetion in auth page*/
       onAuthStateChanged(auth, async user => {
         if (!user) return window.location = "/auth?m=Session%20Expired"
 

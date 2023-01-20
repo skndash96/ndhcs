@@ -6,7 +6,6 @@
   <%- include("partials/head"); %>
   
   <link rel="stylesheet" href="out.css">
-  <script src="https://kit.fontawesome.com/f3339b4404.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <%- include("partials/loader"); %>
@@ -37,12 +36,12 @@
   </script>
   <script>
     window.addEventListener("load", () => {
-      const emsg = document.getElementById("message")
+      const emsg = document.getElementById("message");
       
-      const params = window.location.href.split("?").length > 1 && Object.fromEntries(window.location.href.split("?")[1].split("&").map(x => [x.split("=")[0], decodeURIComponent(x.split("=")[1])]))
-      if (params?.m) emsg.textContent = params.m
-      else emsg.parentElement.remove()
-    })
+      const params = window.location.href.split("?").length > 1 && Object.fromEntries(window.location.href.split("?")[1].split("&").map(x => [x.split("=")[0], decodeURIComponent(x.split("=")[1])]));
+      if (params?.m) emsg.textContent = params.m;
+      else emsg.parentElement.remove();
+    });
   </script>
 </body>
 </html>

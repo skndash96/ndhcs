@@ -1,58 +1,58 @@
-import { db, collection, getDocs, query, limit, orderBy } from "./firebase.js"
+import { db, collection, getDocs, query, limit, orderBy } from "./firebase.js";
 
 export default function loadNews(showMany = true, force = false) {
-  const newsEl = document.getElementById("news")
-  const spinner = newsEl.firstElementChild
+  const newsEl = document.getElementById("news");
+  const spinner = newsEl.firstElementChild;
   
   while (newsEl.children.length > 1) {
-    newsEl.removeChild(newsEl.lastElementChild)
+    newsEl.removeChild(newsEl.lastElementChild);
   }
-  spinner.classList.remove("hidden")
+  spinner.classList.remove("hidden");
     
-  const expTime = 1*60*60*1000
+  const expTime = 1*60*60*1000;
 
-  const news = JSON.parse(localStorage["news"] || null)
+  const news = JSON.parse(localStorage["news"] || null);
   
   if (!force && news && news[0] > Date.now()) {
-    writeNews(news.slice(1))
-    spinner.classList.add("hidden")
+    writeNews(news.slice(1));
+    spinner.classList.add("hidden");
   }
   else {
     getDocs(query(collection(db, "news"), orderBy("date", "desc"), limit(showMany ? 20 : 10)))
     .then(docs => {
-      const news = [Date.now() + expTime]
-      docs.forEach(doc => news.push(doc.data()))
-      localStorage["news"] = JSON.stringify(news)
-      writeNews(news.slice(1))
-      spinner.classList.add("hidden")
+      const news = [Date.now() + expTime];
+      docs.forEach(doc => news.push(doc.data()));
+      localStorage["news"] = JSON.stringify(news);
+      writeNews(news.slice(1));
+      spinner.classList.add("hidden");
     })
     .catch(e => {
-      console.error(e)
-      spinner.innerHTML = "Try again later"
-    })
+      console.error(e);
+      spinner.innerHTML = "Try again later";
+    });
   }
 
   function writeNews(docs) {
-    const moreEl = document.createElement("button")
-    moreEl.className = "underline md:col-span-2 text-center text-blue-600"
-    moreEl.textContent = "Show more items."
+    const moreEl = document.createElement("button");
+    moreEl.className = "underline md:col-span-2 text-center text-blue-600";
+    moreEl.textContent = "Show more items.";
     moreEl.onclick = ({target}) => {
-      let big = window.matchMedia("(min-width: 767px)").matches
-      let els = target.parentElement.querySelectorAll(big ? ".mh" : ".mmh")
+      let big = window.matchMedia("(min-width: 767px)").matches;
+      let els = target.parentElement.querySelectorAll(big ? ".mh" : ".mmh");
       
-      for (let i=0; i < els.length; i++) els[i].classList.remove(big ? "md-hidden" : "max-md:hidden")
+      for (let i=0; i < els.length; i++) els[i].classList.remove(big ? "md-hidden" : "max-md:hidden");
       
       if (!els.length)  {
-        target.textContent = "No further Items."
-        target.disabled = true
-        target.classList.remove("underline")
-      } else target.remove()
+        target.textContent = "No further Items.";
+        target.disabled = true;
+        target.classList.remove("underline");
+      } else target.remove();
     }
     
     newsEl.append(...docs.map(({title,date,url}, i) => {
-      date = new Date(date.seconds*1000)
-      let el = document.createElement("div")
-      el.className = `${showMany ? (i > 9 ? "mmh max-md:hidden " : "") : (i > 11 ? "mh md:hidden " : i > 5 ? "mmh max-md:hidden " : "")}block relative flex gap-4 items-center items-stretch shadow-sm bg-gray-50 hover:shadow-md`
+      date = new Date(date.seconds*1000);
+      let el = document.createElement("div");
+      el.className = `${showMany ? (i > 9 ? "mmh max-md:hidden " : "") : (i > 11 ? "mh md:hidden " : i > 5 ? "mmh max-md:hidden " : "")}block relative flex gap-4 items-center items-stretch shadow-sm bg-gray-50 hover:shadow-md`;
       el.innerHTML = `
         <div class="inline-block p-2 font-['Canela'] text-center bg-sky-500 text-gray-50">
           <span class="text-2xl font-black">
@@ -69,10 +69,10 @@ export default function loadNews(showMany = true, force = false) {
           (url ? `
           <a href="${url}" class="px-1 dl text-blue-600 hover:underline"><i class="mr-2 p-1 rounded-sm bg-blue-400 text-gray-50"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg></i>Download</a>
           ` : "")+
-        "</div>"
+        "</div>";
 
-      if(el.querySelector(".dl")) el.querySelector(".dl").onclick = e => e.currentTarget.firstElementChild.classList.add("bg-green-700")
-      return el
-    }), moreEl)
+      if(el.querySelector(".dl")) el.querySelector(".dl").onclick = e => e.currentTarget.firstElementChild.classList.add("bg-green-700");
+      return el;
+    }), moreEl);
   }
 }
