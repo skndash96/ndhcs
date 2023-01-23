@@ -290,11 +290,24 @@
     <%-include("../dist/scripts/index.js")%>
   </script>
   <script type="module">
-    import { db, getDoc, doc } from "./scripts/firebase.js";
+    import { auth, onAuthStateChanged, setPersistence, browserLocalPersistence, signInAnonymously, db, getDoc, doc } from "./scripts/firebase.js";
     import loadNews from "./scripts/loadnews.js";
     import loadEvents from "./scripts/loadevents.js";
 
-    window.addEventListener("load", () => {
+    onAuthStateChanged(auth, async u => {
+      if (u) loadPage();
+      else {
+        try {
+          await signInAnonymously(auth);
+          await setPersistence(auth, browserLocalPersistence);
+        } catch (e) {
+          console.error(e);
+          loadPage();
+        }
+      }
+    });
+
+    function loadPage() {
       const admsnEl = document.getElementById("admission");
       const admsnData = JSON.parse(localStorage["admission"] || null);
       const expTime = 24*60*60*1000;
@@ -322,7 +335,7 @@
       
       loadNews(false, false);
       loadEvents(true);
-    });
+    };
   </script>
 </body>
 </html>
