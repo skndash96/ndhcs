@@ -46,7 +46,7 @@
     <%-include("../dist/scripts/index.js")%>
   </script>
   <script type="module">
-    import { auth, onAuthStateChanged, setPersistence, browserLocalPersistence, signInAnonymously, signInAnonymously } from "./scripts/firebase.js";
+    import { auth, onAuthStateChanged, setPersistence, browserLocalPersistence, signInAnonymously } from "./scripts/firebase.js";
     import loadNews from "./scripts/loadnews.js";
     import loadEvents from "./scripts/loadevents.js";
 
@@ -54,7 +54,6 @@
       if (u) loadPage();
       else {
         try {
-          console.log("no user")
           await signInAnonymously(auth);
           await setPersistence(auth, browserLocalPersistence);
         } catch (e) {
