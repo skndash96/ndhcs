@@ -29,13 +29,29 @@
   }
   </script>
 </head>
+<style>
+#hero::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  background: RED;
+  background-image: url("/images/view.webp");
+  opacity: .5;
+  background-size: cover;
+  background-position: center;
+}
+#hero > *{
+  z-index: 2;
+}
+</style>
 <body>
   <%- include("partials/loader"); %>
   <%- include("partials/header"); %>
 
-  <section class="px-4 py-12 flex flex-col justify-center items-center bg-slate-400 bg-[url('images/view.webp')] bg-cover bg-center min-h-screen">
+  <section id="hero" class="relative py-12 flex flex-col justify-center items-center bg-indigo-900 min-h-screen">
     <div class="">
-      <h1 class="text-gray-50 drop-shadow-xl text-5xl text-center">
+      <h1 class="text-gray-50 drop-shadow-[3px_3px_5px_rgb(0,0,0)] text-5xl text-center">
         Educating Heart And Mind.
       </h1>
       <h2 class="mr-12 sm:mr-6 md:mr-4 w-fit ml-auto text-sky-100 bg-slate-900/25">Since 2008</h2>
