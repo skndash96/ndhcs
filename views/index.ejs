@@ -41,15 +41,19 @@
   background-size: cover;
   background-position: center;
 }
-#hero > *{
+#hero {
+  background: radial-gradient(#0e023a 90%, #3e278f);
+}
+#hero > * {
   z-index: 2;
+  transform: scale(0.9) translateY(-10%);
 }
 </style>
 <body>
   <%- include("partials/loader"); %>
   <%- include("partials/header"); %>
 
-  <section id="hero" class="relative py-12 flex flex-col justify-center items-center bg-indigo-900 min-h-screen">
+  <section id="hero" class="relative py-12 flex flex-col justify-center items-center min-h-screen">
     <div class="">
       <h1 class="text-gray-50 drop-shadow-[3px_3px_5px_rgb(0,0,0)] text-5xl text-center">
         Educating Heart And Mind.

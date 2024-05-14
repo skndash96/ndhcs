@@ -8,7 +8,7 @@
   }
   html {
     @apply scroll-smooth;
-    font-size: calc(0.7rem + 0.7vw);
+    /* font-size: calc(0.7rem + 0.7vw); */
   }
   body {
     @apply min-h-screen overflow-x-hidden flex flex-col justify-between font-['Cabin'];
@@ -18,7 +18,7 @@
     @apply font-['Canela']
   }
   h1 {
-    @apply text-4xl;
+    @apply text-3xl;
   }
   h2 {
     @apply text-2xl;
